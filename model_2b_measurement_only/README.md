@@ -158,6 +158,29 @@ Directory: `outputs/model_2b_measurement_only/`
 
 Public plots do not include patient identifiers.
 
+## Observed results from the completed run
+
+These numbers come from a real local run on `machine_measurements.csv` (seed 42). They are **not** smoke-test scores.
+
+**Cohort.** Source rows: 800,035 unique studies / 161,352 patients. Duplicate studies: 0. Missing IDs: 0. Unmapped studies excluded: 94,974, leaving 705,061 label-eligible studies. The Model 2 patient-split manifest was reused exactly: **7,378** studies (1,383 patients). After requiring at least one valid primary measurement, **0** further studies were dropped, so Model 2 and Model 2B share the **same test set**: 1,102 studies, 208 patients. Common-cohort Model 2 evaluation was therefore identical to the original Model 2 test table.
+
+**Split.** Train 5,219 / 967 patients; validation 1,057 / 208; test 1,102 / 208.
+
+**Test metrics (same 1,102 studies).**
+
+| Model | Macro F1 | Micro F1 | Macro AUROC | Macro AUPRC |
+| --- | ---: | ---: | ---: | ---: |
+| Model 2 text LSTM (common test) | 0.443 | 0.433 | 0.633 | 0.398 |
+| Model 2B random forest | 0.654 | 0.657 | 0.823 | 0.670 |
+| Model 2B XGBoost | 0.648 | 0.649 | 0.822 | 0.670 |
+| Model 2B logistic regression | 0.603 | 0.613 | 0.799 | 0.624 |
+
+Per-label test F1 for random forest: NORM 0.690, HYP 0.517, STTC 0.700, MI 0.468, CD 0.895. CD is much easier from QRS duration/axis than from residual masked text. MI remains the weakest numerical label (AUROC 0.66). Higher Model 2B scores do **not** prove that measurements are a clinically superior modality: labels are report-derived, and cart software often produces both the measurements and the report statements.
+
+**Permutation importance (validation, random forest).** QRS duration and QRS/T axes dominate CD, STTC, and NORM. MI importance concentrates on QRS axis. Importance is not causal.
+
+Selected RF hyperparameters (validation macro AUROC): 100 trees, max depth 12, min samples leaf 5.
+
 ## Known limitations
 
 1. Targets are weak labels from machine reports, not adjudicated diagnoses.
