@@ -1,0 +1,75 @@
+project_root: .
+input_csv: machine_measurements.csv
+artifacts_dir: artifacts
+output_dir: outputs/model_2_text_only
+label_mapping_path: artifacts/label_mapping.yaml
+random_seed: 42
+
+data:
+  id_columns: [subject_id, study_id]
+  report_prefix: report_
+  text_separator: " | "
+  working_cohort_max_studies: 8000
+  require_at_least_one_label: true
+  exclude_poor_quality_only_records: true
+
+splitting:
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  group_column: subject_id
+
+leakage:
+  mode: mask_trigger_statements
+  mask_token: "[MASKED]"
+  also_mask_summary_phrases: true
+  summary_phrases:
+    - "abnormal ecg"
+    - "borderline ecg"
+    - "normal ecg"
+    - "within normal limits"
+    - "summary:"
+  drop_study_if_no_remaining_text: true
+
+tokenizer:
+  min_token_freq: 2
+  pad_token: "<pad>"
+  unk_token: "<unk>"
+  mask_token: "[MASKED]"
+  max_seq_len: null
+  max_seq_len_percentile: 95
+  max_seq_len_cap: 64
+
+model:
+  encoder: lstm
+  embedding_dim: 64
+  hidden_size: 64
+  num_layers: 1
+  dropout: 0.3
+  bidirectional: true
+  num_labels: 5
+
+training:
+  batch_size: 32
+  max_epochs: 8
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  early_stopping_patience: 3
+  num_workers: 0
+  use_pos_weight: true
+  log_every: 1
+
+thresholds:
+  strategy: per_label_f1
+  fallback: 0.5
+  min_val_positives: 5
+
+evaluation:
+  undefined_token: null
+
+explainability:
+  n_examples: 12
+  max_tokens_to_occlude: 40
+
+smoke:
+  enabled: false

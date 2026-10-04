@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+outputs/
+artifacts/*.csv
+artifacts/*.json
+artifacts/private/
+*.pt
+*.pth
+machine_measurements.csv
+.DS_Store
