@@ -1,0 +1,102 @@
+project_root: .
+input_csv: machine_measurements.csv
+artifacts_dir: artifacts
+output_dir: outputs/model_2b_measurement_only
+label_mapping_path: artifacts/label_mapping.yaml
+shared_labels_path: artifacts/labels.csv
+shared_split_path: artifacts/patient_split_manifest.csv
+model_2_output_dir: outputs/model_2_text_only
+random_seed: 42
+
+data:
+  id_columns: [subject_id, study_id]
+  report_prefix: report_
+  require_at_least_one_label: true
+  exclude_poor_quality_unmapped: true
+  min_valid_primary_features: 1
+  use_shared_labels: true
+  use_shared_split: true
+  working_cohort_max_studies: 8000
+
+features:
+  primary:
+    - rr_interval
+    - p_onset
+    - p_end
+    - qrs_onset
+    - qrs_end
+    - t_end
+    - p_axis
+    - qrs_axis
+    - t_axis
+  derived:
+    - pr_interval
+    - qrs_duration
+    - qt_interval
+  circular_axes: true
+  missing_indicator_min_rate: 0.05
+  excluded:
+    - bandwidth
+    - filtering
+
+validity:
+  timing_sentinels: [29999, 32767, 65534, 65535]
+  axis_sentinels: [29999, 32767, -32767, -32768, 65534, 65535]
+  fiducial_min_ms: 0
+  fiducial_max_ms: 10000
+  rr_min_ms: 0
+  rr_max_ms: 10000
+  axis_min_deg: -180
+  axis_max_deg: 180
+  require_positive_derived_intervals: true
+
+splitting:
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  group_column: subject_id
+
+preprocessing:
+  impute_strategy: median
+
+models:
+  random_forest:
+    enabled: true
+    class_weight: balanced
+    n_jobs: -1
+    grid:
+      n_estimators: [100]
+      max_depth: [12, null]
+      min_samples_leaf: [1, 5]
+  xgboost:
+    enabled: true
+    grid:
+      n_estimators: [100, 200]
+      max_depth: [3, 6]
+      learning_rate: [0.1]
+      subsample: [1.0]
+      colsample_bytree: [1.0]
+  logistic_regression:
+    enabled: true
+    class_weight: balanced
+    max_iter: 2000
+    grid:
+      C: [0.1, 1.0, 10.0]
+
+selection:
+  metric: macro_auroc
+
+thresholds:
+  strategy: per_label_f1
+  fallback: 0.5
+  min_val_positives: 5
+
+explainability:
+  permutation_n_repeats: 3
+  permutation_scoring: roc_auc
+  top_k: 12
+
+smoke:
+  rf_n_estimators: 8
+  xgb_n_estimators: 8
+  permutation_n_repeats: 1
