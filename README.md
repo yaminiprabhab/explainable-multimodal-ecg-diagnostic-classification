@@ -18,13 +18,14 @@ src/         Python packages: shared, model_1…model_4, model_2b
 tests/       pytest suite (synthetic smoke only)
 scripts/     compare_models.py, list_waveform_downloads.py
 docs/        write-ups and per-model notes
+FINAL_REPORT.md  Phase 3 IEEE-style final report (laptop-slice results)
 artifacts/   mapping + laptop-slice labels/split (smoke bundles gitignored)
 outputs/     laptop-slice metrics, comparison.md, explanation PNGs
 waveforms/   small WFDB subset for that slice (not all 800k)
 machine_measurements.csv  2500-row PhysioNet slice (not the full table)
 ```
 
-**How to run (venv, data, order of models):** [docs/running.md](docs/running.md).
+**How to run (venv, data, order of models):** [docs/running.md](docs/running.md). **Phase 3 written report:** [FINAL_REPORT.md](FINAL_REPORT.md).
 
 From the repository root, activate `.venv` then install so Python can import packages under `src/`:
 
@@ -368,19 +369,20 @@ The dataset may require separate access approval. Users should follow the datase
 * [x] Patient-level train, validation, and test split (seed 42, 70/15/15)
 * [x] Clinical-text-only LSTM baseline (Model 2; real-data run documented in [docs/model2.md](docs/model2.md))
 * [x] Extra tabular measurement baseline (Model 2B; see [docs/models/model_2b_measurement_only.md](docs/models/model_2b_measurement_only.md))
-* [x] ECG-only CNN baseline (Model 1 pipeline; smoke-tested; **real WFDB run requires local waveforms**)
-* [x] Feature-concatenation fusion model (Model 3 pipeline; smoke-tested)
-* [x] Attention-based fusion model (Model 4 gated fusion; smoke-tested)
+* [x] ECG-only CNN baseline (Model 1; laptop slice, ~69 waveforms)
+* [x] Feature-concatenation fusion model (Model 3; laptop slice)
+* [x] Attention-based fusion model (Model 4 gated fusion; laptop slice)
 * [x] Evaluation using all specified metrics (shared `evaluate_multilabel`; validation-only F1 thresholds)
 * [x] Error analysis and label-wise comparison (`compare_models.py`; common-cohort table after local runs)
 * [x] ECG waveform attribution (time-window and lead occlusion + example heatmaps)
 * [x] Clinical-text attribution (token occlusion)
 * [x] Comparison of multimodal explanations (ECG + text occlusion; Model 4 gates)
-* [ ] Final presentation (slides); real-data Model 1/3/4 numbers once waveforms are available locally
+* [x] Final report ([FINAL_REPORT.md](FINAL_REPORT.md); common-cohort n=15)
+* [ ] Final presentation (slides)
 
 Waveform files: index the frozen split only. Expected layout `files/pXXXX/p{subject_id}/s{study_id}/` or `{study_id}.npy` of shape `(12, 5000)` at 500 Hz. Per-lead z-score uses **training** statistics only. Do not commit waveforms or patient-level CSVs.
 
-**Project status:** Model 2 and 2B completed on real measurements/reports. Models 1, 3, and 4 are implemented and smoke-tested. Full multimodal results need MIMIC-IV-ECG WFDB files for the frozen cohort.
+**Project status:** Laptop-slice runs of Models 1, 2, 2B, 3, and 4 are complete (fair comparison: 15 test studies with residual text and a usable waveform). Written up in [FINAL_REPORT.md](FINAL_REPORT.md). Not the full MIMIC dump; not for clinical use.
 
 ## Conclusion
 
@@ -400,4 +402,4 @@ The central objective is to assess whether multimodal ECG classification provide
 
 **Core methods:** 1D CNN, LSTM/GRU, feature-concatenation fusion, attention-based fusion, and input-feature attribution
 
-**Project status:** Model 2 and 2B complete on real data; Models 1/3/4 implemented and smoke-tested; real waveform training still local
+**Project status:** Laptop-slice comparison complete (see [FINAL_REPORT.md](FINAL_REPORT.md)); slides still open; not for clinical use

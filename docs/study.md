@@ -429,7 +429,7 @@ Not the published ~8k Model 2 write-up. Local files only (gitignored).
 - Claiming fusion “won” or clinical accuracy from n=15.
 - Patient IDs in figures (use `example_id`).
 
-Longer Model 2 write-up (larger historical run): [model2.md](model2.md). Protocol: [comparison.md](comparison.md).
+The submitted Phase 3 write-up is [FINAL_REPORT.md](../FINAL_REPORT.md). Longer Model 2 notes (larger historical run): [model2.md](model2.md). Protocol: [comparison.md](comparison.md).
 
 ---
 
@@ -446,6 +446,7 @@ Longer Model 2 write-up (larger historical run): [model2.md](model2.md). Protoco
 | Model 1 / 3 / 4 | Laptop slice on ~69 local waveforms (15 common test studies) |
 | Comparison + plots | Tracked under `outputs/` on this branch (see paths above) |
 | Local venv | `.venv/`; `source .venv/bin/activate` |
+| Final report | `FINAL_REPORT.md` (Phase 3 template; laptop-slice numbers) |
 | Final slides | Not started |
 | Clinical deployment | Out of scope |
 
@@ -464,6 +465,7 @@ When an agent changes **anything** in this repo:
 
 ## Changelog
 
+- **2026-10-31 (final report)** — Added `FINAL_REPORT.md` (Phase 3 IEEE-style manuscript + contribution statement) from the laptop-slice comparison (`n=15` common test studies). Linked from this file, `docs/README.md`, `docs/running.md`, and the root `README.md`. Root README status now matches the completed laptop-slice 1/2/2B/3/4 runs.
 - **2026-10-31 (slice in git)** — Tracked the laptop CSV, waveforms, artifacts (not smoke bundles), and `outputs/` (comparison + plots + metrics). Documented exact report file paths. Still not the full MIMIC dump.
 - **2026-10-31 (laptop slice + simple data)** — Ran 2, 2B, 1, 3, 4 on the small CSV + ~69 waveforms; comparison n=15. Fusion skips a Model 2 checkpoint when vocab size differs. Running/study data sections shortened to: CSV in root, optional waveforms folder, same `python -m` commands. Added report checklist.
 - **2026-10-31 (numpy shuffle)** — `sample_working_cohort` copies patient-id arrays before `RandomState.shuffle` (NumPy 2 / pandas 3 mark index arrays read-only). Needed for the small real CSV run.

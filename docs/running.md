@@ -84,4 +84,4 @@ pytest
 
 ## 5. What “done” looks like
 
-Look in `outputs/<model>/` (`test_metrics.csv`, `test_predictions.csv`) and `outputs/comparison/comparison.md` after a compare run. Metrics are agreement with **weak report-derived labels**, not clinical accuracy. Laptop-slice numbers and a report checklist live in [study.md](study.md).
+Look in `outputs/<model>/` (`test_metrics.csv`, `test_predictions.csv`) and `outputs/comparison/comparison.md` after a compare run. Metrics are agreement with **weak report-derived labels**, not clinical accuracy. Laptop-slice numbers live in [study.md](study.md). The Phase 3 manuscript is [FINAL_REPORT.md](../FINAL_REPORT.md).
