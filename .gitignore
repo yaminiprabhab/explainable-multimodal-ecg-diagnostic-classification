@@ -4,6 +4,8 @@ __pycache__/
 .mypy_cache/
 .venv/
 venv/
+*.egg-info/
+src/*.egg-info/
 outputs/
 artifacts/*.csv
 artifacts/*.json
@@ -11,4 +13,6 @@ artifacts/private/
 *.pt
 *.pth
 machine_measurements.csv
+waveforms/
+*.npy
 .DS_Store

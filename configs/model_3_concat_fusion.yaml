@@ -1,0 +1,54 @@
+project_root: .
+artifacts_dir: artifacts
+output_dir: outputs/model_3_concat_fusion
+waveform_root: waveforms
+random_seed: 42
+
+tokenizer:
+  min_token_freq: 2
+  pad_token: "<pad>"
+  unk_token: "<unk>"
+  mask_token: "[MASKED]"
+  max_seq_len: null
+  max_seq_len_percentile: 95
+  max_seq_len_cap: 64
+
+ecg_model:
+  channels: [32, 64, 128, 128]
+  kernel_size: 7
+  embedding_dim: 128
+  dropout: 0.3
+
+text_model:
+  encoder: lstm
+  embedding_dim: 64
+  hidden_size: 64
+  num_layers: 1
+  dropout: 0.3
+  bidirectional: true
+
+init:
+  ecg_checkpoint: outputs/model_1_ecg_only/best_model.pt
+  text_checkpoint: outputs/model_2_text_only/best_model.pt
+
+training:
+  batch_size: 16
+  max_epochs: 8
+  learning_rate: 0.001
+  text_learning_rate: 0.0003
+  weight_decay: 0.0001
+  early_stopping_patience: 3
+  num_workers: 0
+  use_pos_weight: true
+  dropout: 0.3
+
+thresholds:
+  strategy: per_label_f1
+  fallback: 0.5
+  min_val_positives: 5
+
+explainability:
+  n_examples: 12
+  window: 250
+  max_windows: 20
+  max_tokens_to_occlude: 40

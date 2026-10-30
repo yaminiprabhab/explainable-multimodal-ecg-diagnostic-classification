@@ -10,6 +10,55 @@ The project uses a controlled, patient-level experimental design and evaluates f
 
 > **Research focus:** Does multimodal learning improve ECG diagnostic classification, and does attention-based fusion provide measurable benefits over simple feature concatenation?
 
+## Repository layout
+
+```text
+configs/     YAML for each model (paths relative to repo root)
+src/         Python packages: shared, model_1…model_4, model_2b
+tests/       pytest suite (synthetic smoke only)
+scripts/     compare_models.py, list_waveform_downloads.py
+docs/        write-ups and per-model notes
+artifacts/   frozen mapping + local labels/splits (CSVs gitignored)
+outputs/     run products (gitignored)
+waveforms/   local WFDB or .npy for the frozen split only (gitignored; not all 800k)
+```
+
+**How to run (venv, data, order of models):** [docs/running.md](docs/running.md).
+
+From the repository root, activate `.venv` then install so Python can import packages under `src/`:
+
+```text
+# Create once: python3 -m venv .venv
+source .venv/bin/activate
+
+# Install this repo in editable mode, including pytest/dev extras (torch, sklearn, …).
+# Alternative if you skip install: export PYTHONPATH=src
+pip install -e ".[dev]"
+
+# Model 2 (run first): build weak labels, frozen patient split, residual text; train/eval the text LSTM.
+python -m model_2_text_only.run_pipeline --config configs/model_2_text_only.yaml
+
+# Model 2B: train tabular RF/XGBoost/logistic baselines on machine measurements using Model 2's split/labels.
+python -m model_2b_measurement_only.run_pipeline --config configs/model_2b_measurement_only.yaml
+
+# Model 1: train/eval the 12-lead ECG 1D CNN on the frozen split (needs local waveforms).
+python -m model_1_ecg_only.run_pipeline --config configs/model_1_ecg_only.yaml
+
+# Model 3: train/eval concat fusion of ECG CNN + text LSTM embeddings.
+python -m model_3_concat_fusion.run_pipeline --config configs/model_3_concat_fusion.yaml
+
+# Model 4: train/eval gated attention fusion of the same two encoders.
+python -m model_4_attention_fusion.run_pipeline --config configs/model_4_attention_fusion.yaml
+
+# Join each model's test_predictions.csv on the common cohort and write comparison tables.
+python scripts/compare_models.py --dest outputs/comparison
+
+# Run the synthetic smoke/unit test suite (not a clinical evaluation).
+pytest
+```
+
+Shared protocol lives in `src/shared/` (labels, split join, metrics, waveforms, fusion). Model packages stay thin: architecture + CLI wrapping that protocol.
+
 ## Objectives
 
 * Evaluate ECG-only and clinical-text-only diagnostic classification baselines.
@@ -22,9 +71,9 @@ The project uses a controlled, patient-level experimental design and evaluates f
 
 ## Dataset
 
-**Dataset:** MIMIC-IV-ECG Diagnostic Electrocardiogram Matched Subset, version 1.0.
+**Dataset:** MIMIC-IV-ECG Diagnostic Electrocardiogram Matched Subset, version 1.0 ([PhysioNet](https://physionet.org/content/mimic-iv-ecg/1.0/), credentialed). **How you obtain files, what goes on disk, and which model reads which columns/waveforms:** [docs/study.md](docs/study.md#getting-the-data-how-it-actually-arrives). Commands: [docs/running.md](docs/running.md).
 
-The dataset contains diagnostic ECG recordings linked to associated clinical information. The project uses a manageable subset of records with corresponding textual information to accommodate available computational resources and the project timeline.
+The dataset contains diagnostic ECG recordings linked to associated clinical information. The project uses a manageable subset of records with corresponding textual information to accommodate available computational resources and the project timeline. You do **not** download all ~800k waveform files.
 
 ### Dataset characteristics
 
@@ -110,7 +159,15 @@ The model uses the ECG and text encoders to obtain modality representations, whi
 * Examine how the model uses the two modalities across diagnostic categories.
 * Compare the benefits of attention against its additional architectural complexity.
 
-The exact attention formulation will be documented alongside the implementation.
+**Implemented fusion.** After projecting encoder outputs `z_ecg` and `z_text` to a shared size `d`,
+
+`a = softmax(W [P(z_ecg); P(z_text)])`, then `z = a_ecg P(z_ecg) + a_text P(z_text)`.
+
+Gate weights are saved per test study. They are inspectable and are **not** causal explanations.
+
+### Extra baseline: Model 2B (machine measurements)
+
+Model 2B is a **tabular** baseline on ECG cart summary measurements (intervals and axes). It is **not** Model 1 and does not test fusion. It reuses the same weak labels and patient split so residual text (Model 2) can be compared with numerical summaries. See [docs/models/model_2b_measurement_only.md](docs/models/model_2b_measurement_only.md).
 
 ### Model comparison at a glance
 
@@ -119,9 +176,10 @@ The exact attention formulation will be documented alongside the implementation.
 | Model 1 | ECG waveform  | 1D CNN         | None                   |
 | Model 2 | Clinical text | LSTM/GRU       | None                   |
 | Model 3 | ECG + text    | CNN + LSTM/GRU | Feature concatenation  |
-| Model 4 | ECG + text    | CNN + LSTM/GRU | Attention-based fusion |
+| Model 4 | ECG + text    | CNN + LSTM/GRU | Gated modality attention |
+| Model 2B (extra) | Machine measurements | RF / XGBoost / LR | None |
 
-All four models are intended to use the same patient-level data split, target labels, and comparable evaluation procedures to support a controlled comparison.
+All four core models use the same patient-level data split, target labels, and comparable evaluation procedures. Comparison is restricted to test studies that have residual text **and** a usable 12-lead waveform (see [docs/comparison.md](docs/comparison.md)).
 
 ## Experimental Methodology
 
@@ -302,21 +360,26 @@ The dataset may require separate access approval. Users should follow the datase
 
 ## Implementation Plan
 
-* [ ] Dataset acquisition and subset selection
-* [ ] ECG–text record matching and data quality checks
-* [ ] Rule-based diagnostic label generation
-* [ ] Leakage-aware clinical-text preprocessing
-* [ ] Patient-level train, validation, and test split
-* [ ] ECG-only CNN baseline
-* [ ] Clinical-text-only LSTM/GRU baseline
-* [ ] Feature-concatenation fusion model
-* [ ] Attention-based fusion model
-* [ ] Evaluation using all specified metrics
-* [ ] Error analysis and label-wise comparison
-* [ ] ECG waveform attribution
-* [ ] Clinical-text attribution
-* [ ] Comparison of multimodal explanations
-* [ ] Final documentation and presentation
+* [x] Dataset acquisition and subset selection (measurements table; working cohort ~8k studies)
+* [x] ECG–text record matching and data quality checks (`subject_id` / `study_id`)
+* [x] Rule-based diagnostic label generation (`artifacts/label_mapping.yaml` v1.0.0)
+* [x] Leakage-aware clinical-text preprocessing
+* [x] Patient-level train, validation, and test split (seed 42, 70/15/15)
+* [x] Clinical-text-only LSTM baseline (Model 2; real-data run documented in [docs/model2.md](docs/model2.md))
+* [x] Extra tabular measurement baseline (Model 2B; see [docs/models/model_2b_measurement_only.md](docs/models/model_2b_measurement_only.md))
+* [x] ECG-only CNN baseline (Model 1 pipeline; smoke-tested; **real WFDB run requires local waveforms**)
+* [x] Feature-concatenation fusion model (Model 3 pipeline; smoke-tested)
+* [x] Attention-based fusion model (Model 4 gated fusion; smoke-tested)
+* [x] Evaluation using all specified metrics (shared `evaluate_multilabel`; validation-only F1 thresholds)
+* [x] Error analysis and label-wise comparison (`compare_models.py`; common-cohort table after local runs)
+* [x] ECG waveform attribution (time-window and lead occlusion + example heatmaps)
+* [x] Clinical-text attribution (token occlusion)
+* [x] Comparison of multimodal explanations (ECG + text occlusion; Model 4 gates)
+* [ ] Final presentation (slides); real-data Model 1/3/4 numbers once waveforms are available locally
+
+Waveform files: index the frozen split only. Expected layout `files/pXXXX/p{subject_id}/s{study_id}/` or `{study_id}.npy` of shape `(12, 5000)` at 500 Hz. Per-lead z-score uses **training** statistics only. Do not commit waveforms or patient-level CSVs.
+
+**Project status:** Model 2 and 2B completed on real measurements/reports. Models 1, 3, and 4 are implemented and smoke-tested. Full multimodal results need MIMIC-IV-ECG WFDB files for the frozen cohort.
 
 ## Conclusion
 
@@ -336,4 +399,4 @@ The central objective is to assess whether multimodal ECG classification provide
 
 **Core methods:** 1D CNN, LSTM/GRU, feature-concatenation fusion, attention-based fusion, and input-feature attribution
 
-**Project status:** Research and implementation in progress
+**Project status:** Model 2 and 2B complete on real data; Models 1/3/4 implemented and smoke-tested; real waveform training still local

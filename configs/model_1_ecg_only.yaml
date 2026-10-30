@@ -1,0 +1,38 @@
+project_root: .
+artifacts_dir: artifacts
+output_dir: outputs/model_1_ecg_only
+waveform_root: waveforms
+shared_split_path: artifacts/patient_split_manifest.csv
+label_mapping_path: artifacts/label_mapping.yaml
+random_seed: 42
+
+data:
+  target_length: 5000
+  n_leads: 12
+  require_frozen_split: true
+
+model:
+  channels: [32, 64, 128, 128]
+  kernel_size: 7
+  embedding_dim: 128
+  dropout: 0.3
+  num_labels: 5
+
+training:
+  batch_size: 16
+  max_epochs: 8
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  early_stopping_patience: 3
+  num_workers: 0
+  use_pos_weight: true
+
+thresholds:
+  strategy: per_label_f1
+  fallback: 0.5
+  min_val_positives: 5
+
+explainability:
+  n_examples: 12
+  window: 250
+  max_windows: 20
