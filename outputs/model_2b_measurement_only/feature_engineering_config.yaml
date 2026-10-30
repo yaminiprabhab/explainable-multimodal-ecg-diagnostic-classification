@@ -1,0 +1,60 @@
+primary:
+- rr_interval
+- p_onset
+- p_end
+- qrs_onset
+- qrs_end
+- t_end
+- p_axis
+- qrs_axis
+- t_axis
+derived:
+- pr_interval
+- qrs_duration
+- qt_interval
+circular_axes: true
+excluded:
+- bandwidth
+- filtering
+feature_columns_before_imputation:
+- rr_interval
+- p_onset
+- p_end
+- qrs_onset
+- qrs_end
+- t_end
+- p_axis
+- qrs_axis
+- t_axis
+- pr_interval
+- qrs_duration
+- qt_interval
+model_columns:
+- rr_interval
+- p_onset
+- p_end
+- qrs_onset
+- qrs_end
+- t_end
+- p_axis
+- qrs_axis
+- t_axis
+- pr_interval
+- qrs_duration
+- qt_interval
+- p_axis_sin
+- p_axis_cos
+- qrs_axis_sin
+- qrs_axis_cos
+- t_axis_sin
+- t_axis_cos
+- p_onset_missing
+- p_end_missing
+- p_axis_missing
+- pr_interval_missing
+formulas:
+  pr_interval: p_end - p_onset
+  qrs_duration: qrs_end - qrs_onset
+  qt_interval: t_end - qrs_onset
+  axis_sin: sin(deg2rad(imputed_axis))
+  axis_cos: cos(deg2rad(imputed_axis))

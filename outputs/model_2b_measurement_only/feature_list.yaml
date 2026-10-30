@@ -1,0 +1,36 @@
+feature_columns:
+- rr_interval
+- p_onset
+- p_end
+- qrs_onset
+- qrs_end
+- t_end
+- p_axis
+- qrs_axis
+- t_axis
+- pr_interval
+- qrs_duration
+- qt_interval
+model_columns:
+- rr_interval
+- p_onset
+- p_end
+- qrs_onset
+- qrs_end
+- t_end
+- p_axis
+- qrs_axis
+- t_axis
+- pr_interval
+- qrs_duration
+- qt_interval
+- p_axis_sin
+- p_axis_cos
+- qrs_axis_sin
+- qrs_axis_cos
+- t_axis_sin
+- t_axis_cos
+- p_onset_missing
+- p_end_missing
+- p_axis_missing
+- pr_interval_missing

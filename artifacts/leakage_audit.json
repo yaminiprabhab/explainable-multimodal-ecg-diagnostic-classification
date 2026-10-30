@@ -1,0 +1,63 @@
+{
+  "n_studies": 542,
+  "empty_text_studies": 19,
+  "fraction_with_remaining_text": 0.9649446494464945,
+  "mean_remaining_tokens": 4.523985239852398,
+  "median_remaining_tokens": 2.0,
+  "studies_where_rules_still_fire_on_masked_text": 0,
+  "fraction_reconstructable_from_masked_text": 0.0,
+  "rule_hits_on_masked_text": {
+    "NORM": 0,
+    "HYP": 0,
+    "STTC": 0,
+    "MI": 0,
+    "CD": 0
+  },
+  "residual_clue_rates": {
+    "NORM": {
+      "clue_hits": 0,
+      "clue_hits_among_positives": 0,
+      "positives": 131
+    },
+    "HYP": {
+      "clue_hits": 1,
+      "clue_hits_among_positives": 1,
+      "positives": 119
+    },
+    "STTC": {
+      "clue_hits": 3,
+      "clue_hits_among_positives": 1,
+      "positives": 219
+    },
+    "MI": {
+      "clue_hits": 21,
+      "clue_hits_among_positives": 0,
+      "positives": 140
+    },
+    "CD": {
+      "clue_hits": 4,
+      "clue_hits_among_positives": 0,
+      "positives": 144
+    }
+  },
+  "example_remaining_text": [
+    "Sinus rhythm",
+    "Sinus bradycardia",
+    "Sinus rhythm | Abnormal R-wave progression, early transition | Prolonged QT interval",
+    "Sinus bradycardia with interpolated PVC(s)",
+    "Sinus bradycardia.",
+    "Sinus rhythm",
+    "Sinus rhythm",
+    "Sinus rhythm. | Poor R wave progression - probable normal variant"
+  ],
+  "experiment_type": "residual_text_prediction",
+  "stop_training": false,
+  "notes": [
+    "Targets are generated from the same report fields used to build text features.",
+    "Trigger statements are masked, but synonyms, rhythm context, and report structure can still correlate with labels.",
+    "This experiment measures whether leftover non-trigger text predicts weak labels, not cardiologist-verified diagnosis.",
+    "Masking does not eliminate leakage."
+  ],
+  "source_fields_for_labels": "report_0 ... report_17",
+  "fields_supplied_to_model": "clinical_text after statement-level masking"
+}

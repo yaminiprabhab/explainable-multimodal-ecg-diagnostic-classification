@@ -1,0 +1,27 @@
+{
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.003877024060672,
+      "val_loss": 1.017953082367226
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.9815181825578827,
+      "val_loss": 1.019158990294845
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.9658335361284079,
+      "val_loss": 1.0200339467437178
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.9467867391625631,
+      "val_loss": 1.0179967571187902
+    }
+  ],
+  "best_val_loss": 1.017953082367226,
+  "epochs_run": 4,
+  "checkpoint": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/outputs/model_2_text_only/best_model.pt"
+}

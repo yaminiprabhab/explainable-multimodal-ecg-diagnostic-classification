@@ -1,0 +1,12 @@
+{
+  "source": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/artifacts/patient_split_manifest.csv",
+  "reused_shared_artifact": true,
+  "method": "reuse_model_2_patient_split_manifest",
+  "n_manifest_studies": 523,
+  "n_manifest_subjects": 100,
+  "split_counts": {
+    "train": 388,
+    "test": 81,
+    "val": 54
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "mean_gate_ecg": 0.6235911250114441,
+  "mean_gate_text": 0.3764088749885559,
+  "note": "Softmax modality gates. Not causal explanations."
+}

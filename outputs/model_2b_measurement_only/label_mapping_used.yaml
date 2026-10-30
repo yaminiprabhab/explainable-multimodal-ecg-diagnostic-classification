@@ -1,0 +1,205 @@
+version: 1.0.0
+status: weak_labels_from_machine_reports
+clinically_verified: false
+source_fields: report_*
+label_order:
+- NORM
+- HYP
+- STTC
+- MI
+- CD
+uncertain_policy: positive_weak
+norm_policy: explicit_and_no_abnormality
+negation_patterns:
+- \bno evidence of\b
+- \bno sign of\b
+- \bnot (consistent|diagnostic|indicative|suggestive) (of|with)\b
+- \bdoes not (meet|show|indicate|suggest)\b
+- \bnegative for\b
+- \bwithout evidence of\b
+- \bruled out\b
+- \bexcluded\b
+uncertainty_patterns:
+- \bpossible\b
+- \bpossibly\b
+- \bprobable\b
+- \bprobably\b
+- \bconsider\b
+- \bcannot exclude\b
+- \bcannot rule out\b
+- \bcan not rule out\b
+- \bmay be\b
+- \bsuggests?\b
+- \bborderline\b
+poor_quality_patterns:
+- poor quality
+- data quality
+- unsuitable for analysis
+- missing lead
+- technical difficulties
+- motion artifact
+- requires manual review
+- measurement error
+- pediatric
+- without knowing patient
+missing_value_tokens:
+- ''
+- nan
+- none
+- 'null'
+- n/a
+- na
+- .
+- '-'
+rules:
+  HYP:
+    description: Cardiac chamber hypertrophy or enlargement statements.
+    patterns:
+    - \b(left|right|bi)?\s*ventricular hypertrophy\b
+    - \b(biventricular|bi-ventricular) hypertrophy\b
+    - \blvh\b
+    - \brvh\b
+    - \b(left|right|bi)?\s*atrial (enlargement|abnormality)\b
+    - \bbiatrial enlargement\b
+    - \bvoltage criteria (for|of) lvh\b
+    - \bconsider lvh\b
+    synonyms:
+    - LVH
+    - RVH
+    - LAE
+    - RAE
+    - left atrial abnormality
+    - ventricular hypertrophy
+    false_positives:
+    - Generic enlargement or overload without chamber/hypertrophy context is ignored.
+    - A hypertrophy and/or ischemia phrase on an ST/T line still fires HYP because
+      hypertrophy is named.
+  STTC:
+    description: ST-segment and T-wave morphology changes, including ischemia-as-STT
+      language.
+    patterns:
+    - \bst-t\b
+    - \bst[ -]?t changes\b
+    - \bst changes\b
+    - \bt wave\b
+    - \bt abnormalities\b
+    - \bnonspecific t\b
+    - \bst elevation\b
+    - \bst depression\b
+    - \bst junctional\b
+    - \brepolarization abnormalit
+    - \bsecondary repol
+    - \bmyocardial ischemia\b
+    - \bmyocardial injury\b
+    - \bearly repolarization\b
+    synonyms:
+    - ST-T changes
+    - T wave changes
+    - ST elevation
+    - ST depression
+    - ischemia
+    false_positives:
+    - Isolated PVC/VPC/PAC are not STTC.
+    - Prolonged QT is not mapped to STTC in this version.
+    - Isolated ischemia is STTC, not MI, unless an infarct/STEMI phrase is also present.
+  MI:
+    description: Myocardial infarction / infarct statements, not ischemia alone.
+    patterns:
+    - \binfarct(ion)?\b
+    - \bstemi\b
+    - \bst elevation mi\b
+    - \bacute mi\b
+    - \bmyocardial infarction\b
+    - \bq (waves?|suggests?) .{0,40}infarct
+    synonyms:
+    - infarct
+    - infarction
+    - STEMI
+    - Q waves suggesting infarct
+    false_positives:
+    - Myocardial ischemia without infarct/STEMI/MI does not assign MI.
+    - LVH vs infarct differential statements still fire MI if infarct is named, and
+      HYP if LVH is named.
+  CD:
+    description: Conduction delay, block, pacing, pre-excitation, and frank axis deviation.
+    patterns:
+    - \bbundle branch block\b
+    - \brbbb\b
+    - \blbbb\b
+    - \bilbbb\b
+    - \birbbb\b
+    - \bfascicular block\b
+    - \blafb\b
+    - \blpfb\b
+    - \bleft anterior fascicular\b
+    - \bleft posterior fascicular\b
+    - \ba-?v block\b
+    - \bav block\b
+    - \bheart block\b
+    - \bmobitz\b
+    - \bwenckebach\b
+    - \bprolonged pr\b
+    - \bshort pr interval\b
+    - \bivcd\b
+    - \biv conduction defect\b
+    - \bintraventricular conduction\b
+    - \bpacemaker\b
+    - \b(atrial|ventricular|demand|sequential) pacing\b
+    - \bpacing\b
+    - \bwpw\b
+    - \bwolff[- ]parkinson[- ]white\b
+    - \bpre-?excitation\b
+    - \b(left|right|extreme) axis deviation\b
+    - \b(leftward|rightward) axis\b
+    - \babnormal extreme qrs axis\b
+    synonyms:
+    - RBBB
+    - LBBB
+    - LAFB
+    - AV block
+    - IVCD
+    - pacemaker
+    - WPW
+    - axis deviation
+    false_positives:
+    - PAC/PVC/VPC are not mapped to CD.
+    - Electronic simulator is not treated as pacing.
+    - A pacing statement inside no further analysis still indicates a paced ECG and
+      maps to CD.
+  NORM:
+    description: Explicit machine summary of a normal ECG, suppressed if any abnormality
+      class is present.
+    patterns:
+    - \bnormal ecg\b
+    - \bnormal ekg\b
+    - \bwithin normal limits\b
+    - \bno issues found\b
+    - \bnormal heart tracing\b
+    synonyms:
+    - Normal ECG
+    - within normal limits
+    false_positives:
+    - normal variant does not assign NORM.
+    - Borderline ECG does not assign NORM.
+    - The word normal in unrelated phrases does not assign NORM.
+    - Co-occurrence of HYP/STTC/MI/CD forces NORM=0.
+residual_leakage_clues:
+  description: Phrases not used as primary rules but that can still reveal a target.
+  MI:
+  - q wave
+  - poor r wave progression
+  - r-wave progression
+  - 'qs '
+  HYP:
+  - voltage criteria
+  - high voltage
+  STTC:
+  - ischemia
+  - injury pattern
+  CD:
+  - paced
+  - fusion complex
+  - aberrant
+  NORM:
+  - abnormal ecg
+  - borderline ecg

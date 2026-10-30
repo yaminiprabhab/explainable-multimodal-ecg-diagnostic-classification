@@ -1,0 +1,18 @@
+{
+  "join": {
+    "n_split": 523,
+    "n_after_label_join": 523,
+    "require_text": false,
+    "label_mapping_frozen": true,
+    "mapping_version": "1.0.0",
+    "n_with_text_join": 523
+  },
+  "waveforms": {
+    "n_cohort": 523,
+    "n_indexed": 523,
+    "n_usable": 69,
+    "n_missing": 452,
+    "n_dropped": 454,
+    "waveform_root": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/waveforms"
+  }
+}

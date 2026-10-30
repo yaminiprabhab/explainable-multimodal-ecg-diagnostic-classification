@@ -1,0 +1,25 @@
+{
+  "architecture": {
+    "channels": [
+      32,
+      64,
+      128,
+      128
+    ],
+    "kernel_size": 7,
+    "embedding_dim": 128,
+    "dropout": 0.3,
+    "num_labels": 5
+  },
+  "device": "cpu",
+  "label_order": [
+    "NORM",
+    "HYP",
+    "STTC",
+    "MI",
+    "CD"
+  ],
+  "seed": 42,
+  "experiment_type": "ecg_waveform_only",
+  "finetune_policy": "trained_from_scratch"
+}

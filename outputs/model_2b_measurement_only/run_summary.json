@@ -1,0 +1,1527 @@
+{
+  "stopped_before_training": false,
+  "n_train": 388,
+  "n_val": 54,
+  "n_test": 81,
+  "n_test_subjects": 15,
+  "feature_columns": [
+    "rr_interval",
+    "p_onset",
+    "p_end",
+    "qrs_onset",
+    "qrs_end",
+    "t_end",
+    "p_axis",
+    "qrs_axis",
+    "t_axis",
+    "pr_interval",
+    "qrs_duration",
+    "qt_interval"
+  ],
+  "model_columns": [
+    "rr_interval",
+    "p_onset",
+    "p_end",
+    "qrs_onset",
+    "qrs_end",
+    "t_end",
+    "p_axis",
+    "qrs_axis",
+    "t_axis",
+    "pr_interval",
+    "qrs_duration",
+    "qt_interval",
+    "p_axis_sin",
+    "p_axis_cos",
+    "qrs_axis_sin",
+    "qrs_axis_cos",
+    "t_axis_sin",
+    "t_axis_cos",
+    "p_onset_missing",
+    "p_end_missing",
+    "p_axis_missing",
+    "pr_interval_missing"
+  ],
+  "models": {
+    "random_forest": {
+      "test_metrics": {
+        "n_studies": 81,
+        "n_subjects": 15,
+        "label_order": [
+          "NORM",
+          "HYP",
+          "STTC",
+          "MI",
+          "CD"
+        ],
+        "thresholds": {
+          "NORM": 0.75,
+          "HYP": 0.7,
+          "STTC": 0.39999999999999997,
+          "MI": 0.39999999999999997,
+          "CD": 0.5499999999999999
+        },
+        "macro_f1": 0.4600052042674993,
+        "micro_f1": 0.5350877192982456,
+        "macro_precision": 0.5380823777372914,
+        "macro_recall": 0.4596336996336996,
+        "micro_precision": 0.5213675213675214,
+        "micro_recall": 0.5495495495495496,
+        "per_label": {
+          "NORM": {
+            "support": 14,
+            "prevalence": 0.1728395061728395,
+            "threshold": 0.75,
+            "precision": 0.42857142857142855,
+            "recall": 0.21428571428571427,
+            "f1": 0.2857142857142857,
+            "auroc": 0.7089552238805971,
+            "auprc": 0.43907802681108765,
+            "tp": 3,
+            "fp": 4,
+            "tn": 63,
+            "fn": 11,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 14,
+            "negative_support": 67
+          },
+          "HYP": {
+            "support": 21,
+            "prevalence": 0.25925925925925924,
+            "threshold": 0.7,
+            "precision": 0.5,
+            "recall": 0.14285714285714285,
+            "f1": 0.2222222222222222,
+            "auroc": 0.5698412698412698,
+            "auprc": 0.38579351768594305,
+            "tp": 3,
+            "fp": 3,
+            "tn": 57,
+            "fn": 18,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 21,
+            "negative_support": 60
+          },
+          "STTC": {
+            "support": 33,
+            "prevalence": 0.4074074074074074,
+            "threshold": 0.39999999999999997,
+            "precision": 0.7333333333333333,
+            "recall": 0.6666666666666666,
+            "f1": 0.6984126984126984,
+            "auroc": 0.792929292929293,
+            "auprc": 0.780286709077771,
+            "tp": 22,
+            "fp": 8,
+            "tn": 40,
+            "fn": 11,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 33,
+            "negative_support": 48
+          },
+          "MI": {
+            "support": 13,
+            "prevalence": 0.16049382716049382,
+            "threshold": 0.39999999999999997,
+            "precision": 0.09302325581395349,
+            "recall": 0.3076923076923077,
+            "f1": 0.14285714285714285,
+            "auroc": 0.27601809954751133,
+            "auprc": 0.1148389071786006,
+            "tp": 4,
+            "fp": 39,
+            "tn": 29,
+            "fn": 9,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 13,
+            "negative_support": 68
+          },
+          "CD": {
+            "support": 30,
+            "prevalence": 0.37037037037037035,
+            "threshold": 0.5499999999999999,
+            "precision": 0.9354838709677419,
+            "recall": 0.9666666666666667,
+            "f1": 0.9508196721311475,
+            "auroc": 0.988235294117647,
+            "auprc": 0.9784967687952566,
+            "tp": 29,
+            "fp": 2,
+            "tn": 49,
+            "fn": 1,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 30,
+            "negative_support": 51
+          }
+        },
+        "macro_auroc": 0.6671958360632637,
+        "macro_auprc": 0.5396987859097317,
+        "micro_auroc": 0.758411472697187
+      },
+      "selection": {
+        "selected_params": {
+          "n_estimators": 100,
+          "max_depth": 12,
+          "min_samples_leaf": 5
+        },
+        "selected_score": 0.8495604807445387,
+        "selection_metric": "macro_auroc",
+        "trials": [
+          {
+            "params": {
+              "n_estimators": 100,
+              "max_depth": 12,
+              "min_samples_leaf": 1
+            },
+            "score": 0.837909595780328,
+            "n_defined_labels": 5
+          },
+          {
+            "params": {
+              "n_estimators": 100,
+              "max_depth": 12,
+              "min_samples_leaf": 5
+            },
+            "score": 0.8495604807445387,
+            "n_defined_labels": 5
+          },
+          {
+            "params": {
+              "n_estimators": 100,
+              "max_depth": null,
+              "min_samples_leaf": 1
+            },
+            "score": 0.842813112957764,
+            "n_defined_labels": 5
+          },
+          {
+            "params": {
+              "n_estimators": 100,
+              "max_depth": null,
+              "min_samples_leaf": 5
+            },
+            "score": 0.8485140724036409,
+            "n_defined_labels": 5
+          }
+        ],
+        "label_notes": [
+          {
+            "label": "NORM",
+            "fallback": false,
+            "n_pos": 105,
+            "n_neg": 283,
+            "pos_weight": 2.6952380952380954
+          },
+          {
+            "label": "HYP",
+            "fallback": false,
+            "n_pos": 87,
+            "n_neg": 301,
+            "pos_weight": 3.4597701149425286
+          },
+          {
+            "label": "STTC",
+            "fallback": false,
+            "n_pos": 150,
+            "n_neg": 238,
+            "pos_weight": 1.5866666666666667
+          },
+          {
+            "label": "MI",
+            "fallback": false,
+            "n_pos": 108,
+            "n_neg": 280,
+            "pos_weight": 2.5925925925925926
+          },
+          {
+            "label": "CD",
+            "fallback": false,
+            "n_pos": 79,
+            "n_neg": 309,
+            "pos_weight": 3.911392405063291
+          }
+        ]
+      }
+    },
+    "xgboost": {
+      "test_metrics": {
+        "n_studies": 81,
+        "n_subjects": 15,
+        "label_order": [
+          "NORM",
+          "HYP",
+          "STTC",
+          "MI",
+          "CD"
+        ],
+        "thresholds": {
+          "NORM": 0.85,
+          "HYP": 0.35,
+          "STTC": 0.25,
+          "MI": 0.1,
+          "CD": 0.39999999999999997
+        },
+        "macro_f1": 0.4718794400373021,
+        "micro_f1": 0.505338078291815,
+        "macro_precision": 0.44695468509984637,
+        "macro_recall": 0.5636230436230436,
+        "micro_precision": 0.4176470588235294,
+        "micro_recall": 0.6396396396396397,
+        "per_label": {
+          "NORM": {
+            "support": 14,
+            "prevalence": 0.1728395061728395,
+            "threshold": 0.85,
+            "precision": 0.2222222222222222,
+            "recall": 0.14285714285714285,
+            "f1": 0.17391304347826086,
+            "auroc": 0.6385927505330491,
+            "auprc": 0.2669761430034739,
+            "tp": 2,
+            "fp": 7,
+            "tn": 60,
+            "fn": 12,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 14,
+            "negative_support": 67
+          },
+          "HYP": {
+            "support": 21,
+            "prevalence": 0.25925925925925924,
+            "threshold": 0.35,
+            "precision": 0.3125,
+            "recall": 0.47619047619047616,
+            "f1": 0.37735849056603776,
+            "auroc": 0.6150793650793651,
+            "auprc": 0.3910221975873032,
+            "tp": 10,
+            "fp": 22,
+            "tn": 38,
+            "fn": 11,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 21,
+            "negative_support": 60
+          },
+          "STTC": {
+            "support": 33,
+            "prevalence": 0.4074074074074074,
+            "threshold": 0.25,
+            "precision": 0.6857142857142857,
+            "recall": 0.7272727272727273,
+            "f1": 0.7058823529411765,
+            "auroc": 0.7910353535353536,
+            "auprc": 0.8062079801905118,
+            "tp": 24,
+            "fp": 11,
+            "tn": 37,
+            "fn": 9,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 33,
+            "negative_support": 48
+          },
+          "MI": {
+            "support": 13,
+            "prevalence": 0.16049382716049382,
+            "threshold": 0.1,
+            "precision": 0.1111111111111111,
+            "recall": 0.5384615384615384,
+            "f1": 0.18421052631578946,
+            "auroc": 0.33710407239819,
+            "auprc": 0.12563851008667246,
+            "tp": 7,
+            "fp": 56,
+            "tn": 12,
+            "fn": 6,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 13,
+            "negative_support": 68
+          },
+          "CD": {
+            "support": 30,
+            "prevalence": 0.37037037037037035,
+            "threshold": 0.39999999999999997,
+            "precision": 0.9032258064516129,
+            "recall": 0.9333333333333333,
+            "f1": 0.9180327868852459,
+            "auroc": 0.9771241830065359,
+            "auprc": 0.9629969064834395,
+            "tp": 28,
+            "fp": 3,
+            "tn": 48,
+            "fn": 2,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 30,
+            "negative_support": 51
+          }
+        },
+        "macro_auroc": 0.6717871449104987,
+        "macro_auprc": 0.5105683474702801,
+        "micro_auroc": 0.7479009621866766
+      },
+      "selection": {
+        "selected_params": {
+          "n_estimators": 200,
+          "max_depth": 3,
+          "learning_rate": 0.1,
+          "subsample": 1.0,
+          "colsample_bytree": 1.0
+        },
+        "selected_score": 0.834511324182524,
+        "selection_metric": "macro_auroc",
+        "trials": [
+          {
+            "params": {
+              "n_estimators": 100,
+              "max_depth": 3,
+              "learning_rate": 0.1,
+              "subsample": 1.0,
+              "colsample_bytree": 1.0
+            },
+            "score": 0.8274563470096394,
+            "n_defined_labels": 5
+          },
+          {
+            "params": {
+              "n_estimators": 100,
+              "max_depth": 6,
+              "learning_rate": 0.1,
+              "subsample": 1.0,
+              "colsample_bytree": 1.0
+            },
+            "score": 0.8212086522612271,
+            "n_defined_labels": 5
+          },
+          {
+            "params": {
+              "n_estimators": 200,
+              "max_depth": 3,
+              "learning_rate": 0.1,
+              "subsample": 1.0,
+              "colsample_bytree": 1.0
+            },
+            "score": 0.834511324182524,
+            "n_defined_labels": 5
+          },
+          {
+            "params": {
+              "n_estimators": 200,
+              "max_depth": 6,
+              "learning_rate": 0.1,
+              "subsample": 1.0,
+              "colsample_bytree": 1.0
+            },
+            "score": 0.8112603061817574,
+            "n_defined_labels": 5
+          }
+        ],
+        "label_notes": [
+          {
+            "label": "NORM",
+            "fallback": false,
+            "n_pos": 105,
+            "n_neg": 283,
+            "pos_weight": 2.6952380952380954
+          },
+          {
+            "label": "HYP",
+            "fallback": false,
+            "n_pos": 87,
+            "n_neg": 301,
+            "pos_weight": 3.4597701149425286
+          },
+          {
+            "label": "STTC",
+            "fallback": false,
+            "n_pos": 150,
+            "n_neg": 238,
+            "pos_weight": 1.5866666666666667
+          },
+          {
+            "label": "MI",
+            "fallback": false,
+            "n_pos": 108,
+            "n_neg": 280,
+            "pos_weight": 2.5925925925925926
+          },
+          {
+            "label": "CD",
+            "fallback": false,
+            "n_pos": 79,
+            "n_neg": 309,
+            "pos_weight": 3.911392405063291
+          }
+        ],
+        "xgboost_version": "3.4.1"
+      }
+    },
+    "logistic_regression": {
+      "test_metrics": {
+        "n_studies": 81,
+        "n_subjects": 15,
+        "label_order": [
+          "NORM",
+          "HYP",
+          "STTC",
+          "MI",
+          "CD"
+        ],
+        "thresholds": {
+          "NORM": 0.7,
+          "HYP": 0.7,
+          "STTC": 0.39999999999999997,
+          "MI": 0.6,
+          "CD": 0.6
+        },
+        "macro_f1": 0.42792937486480637,
+        "micro_f1": 0.5309734513274337,
+        "macro_precision": 0.42287581699346405,
+        "macro_recall": 0.4387345987345987,
+        "micro_precision": 0.5217391304347826,
+        "micro_recall": 0.5405405405405406,
+        "per_label": {
+          "NORM": {
+            "support": 14,
+            "prevalence": 0.1728395061728395,
+            "threshold": 0.7,
+            "precision": 0.2222222222222222,
+            "recall": 0.14285714285714285,
+            "f1": 0.17391304347826086,
+            "auroc": 0.7633262260127931,
+            "auprc": 0.3354919096853524,
+            "tp": 2,
+            "fp": 7,
+            "tn": 60,
+            "fn": 12,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 14,
+            "negative_support": 67
+          },
+          "HYP": {
+            "support": 21,
+            "prevalence": 0.25925925925925924,
+            "threshold": 0.7,
+            "precision": 0.3333333333333333,
+            "recall": 0.3333333333333333,
+            "f1": 0.3333333333333333,
+            "auroc": 0.5761904761904761,
+            "auprc": 0.4155212209311144,
+            "tp": 7,
+            "fp": 14,
+            "tn": 46,
+            "fn": 14,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 21,
+            "negative_support": 60
+          },
+          "STTC": {
+            "support": 33,
+            "prevalence": 0.4074074074074074,
+            "threshold": 0.39999999999999997,
+            "precision": 0.6764705882352942,
+            "recall": 0.696969696969697,
+            "f1": 0.6865671641791045,
+            "auroc": 0.8428030303030303,
+            "auprc": 0.8309845927918444,
+            "tp": 23,
+            "fp": 11,
+            "tn": 37,
+            "fn": 10,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 33,
+            "negative_support": 48
+          },
+          "MI": {
+            "support": 13,
+            "prevalence": 0.16049382716049382,
+            "threshold": 0.6,
+            "precision": 0.11764705882352941,
+            "recall": 0.15384615384615385,
+            "f1": 0.13333333333333333,
+            "auroc": 0.28054298642533937,
+            "auprc": 0.11895908924999421,
+            "tp": 2,
+            "fp": 15,
+            "tn": 53,
+            "fn": 11,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 13,
+            "negative_support": 68
+          },
+          "CD": {
+            "support": 30,
+            "prevalence": 0.37037037037037035,
+            "threshold": 0.6,
+            "precision": 0.7647058823529411,
+            "recall": 0.8666666666666667,
+            "f1": 0.8125,
+            "auroc": 0.9379084967320261,
+            "auprc": 0.9137392485458881,
+            "tp": 26,
+            "fp": 8,
+            "tn": 43,
+            "fn": 4,
+            "undefined_auroc_reason": null,
+            "undefined_auprc_reason": null,
+            "positive_support": 30,
+            "negative_support": 51
+          }
+        },
+        "macro_auroc": 0.6801542431327331,
+        "macro_auprc": 0.5229392122408387,
+        "micro_auroc": 0.7097812097812097
+      },
+      "selection": {
+        "selected_params": {
+          "C": 0.1
+        },
+        "selected_score": 0.8432333044284709,
+        "selection_metric": "macro_auroc",
+        "trials": [
+          {
+            "params": {
+              "C": 0.1
+            },
+            "score": 0.8432333044284709,
+            "n_defined_labels": 5
+          },
+          {
+            "params": {
+              "C": 1.0
+            },
+            "score": 0.8375028832445128,
+            "n_defined_labels": 5
+          },
+          {
+            "params": {
+              "C": 10.0
+            },
+            "score": 0.8340892556387771,
+            "n_defined_labels": 5
+          }
+        ],
+        "label_notes": [
+          {
+            "label": "NORM",
+            "fallback": false,
+            "n_pos": 105,
+            "n_neg": 283,
+            "pos_weight": 2.6952380952380954
+          },
+          {
+            "label": "HYP",
+            "fallback": false,
+            "n_pos": 87,
+            "n_neg": 301,
+            "pos_weight": 3.4597701149425286
+          },
+          {
+            "label": "STTC",
+            "fallback": false,
+            "n_pos": 150,
+            "n_neg": 238,
+            "pos_weight": 1.5866666666666667
+          },
+          {
+            "label": "MI",
+            "fallback": false,
+            "n_pos": 108,
+            "n_neg": 280,
+            "pos_weight": 2.5925925925925926
+          },
+          {
+            "label": "CD",
+            "fallback": false,
+            "n_pos": 79,
+            "n_neg": 309,
+            "pos_weight": 3.911392405063291
+          }
+        ]
+      }
+    }
+  },
+  "exclusion_log": {
+    "steps": [
+      {
+        "step": "loaded",
+        "n": 2500
+      },
+      {
+        "step": "after_missing_id_drop",
+        "n": 2500
+      },
+      {
+        "step": "after_study_dedup",
+        "n": 2500
+      },
+      {
+        "step": "after_label_alignment",
+        "n": 2500
+      },
+      {
+        "step": "after_label_eligibility",
+        "n": 2245
+      },
+      {
+        "step": "after_shared_split_inner_join",
+        "n": 523
+      },
+      {
+        "step": "after_measurement_eligibility",
+        "n": 523
+      }
+    ],
+    "input_validation": {
+      "n_rows": 2500,
+      "n_columns": 33,
+      "columns": [
+        "subject_id",
+        "study_id",
+        "cart_id",
+        "ecg_time",
+        "report_0",
+        "report_1",
+        "report_2",
+        "report_3",
+        "report_4",
+        "report_5",
+        "report_6",
+        "report_7",
+        "report_8",
+        "report_9",
+        "report_10",
+        "report_11",
+        "report_12",
+        "report_13",
+        "report_14",
+        "report_15",
+        "report_16",
+        "report_17",
+        "bandwidth",
+        "filtering",
+        "rr_interval",
+        "p_onset",
+        "p_end",
+        "qrs_onset",
+        "qrs_end",
+        "t_end",
+        "p_axis",
+        "qrs_axis",
+        "t_axis"
+      ],
+      "report_columns": [
+        "report_0",
+        "report_1",
+        "report_2",
+        "report_3",
+        "report_4",
+        "report_5",
+        "report_6",
+        "report_7",
+        "report_8",
+        "report_9",
+        "report_10",
+        "report_11",
+        "report_12",
+        "report_13",
+        "report_14",
+        "report_15",
+        "report_16",
+        "report_17"
+      ],
+      "duplicate_rows": 0,
+      "duplicate_study_id_rows": 0,
+      "unique_subject_id": 450,
+      "unique_study_id": 2500,
+      "missing_subject_id": 0,
+      "missing_study_id": 0,
+      "rows_with_no_report_text": 0,
+      "dtypes": {
+        "subject_id": "int64",
+        "study_id": "int64",
+        "cart_id": "int64",
+        "ecg_time": "str",
+        "report_0": "str",
+        "report_1": "str",
+        "report_2": "str",
+        "report_3": "str",
+        "report_4": "str",
+        "report_5": "str",
+        "report_6": "str",
+        "report_7": "str",
+        "report_8": "str",
+        "report_9": "str",
+        "report_10": "str",
+        "report_11": "str",
+        "report_12": "float64",
+        "report_13": "str",
+        "report_14": "float64",
+        "report_15": "float64",
+        "report_16": "float64",
+        "report_17": "float64",
+        "bandwidth": "str",
+        "filtering": "str",
+        "rr_interval": "int64",
+        "p_onset": "int64",
+        "p_end": "int64",
+        "qrs_onset": "int64",
+        "qrs_end": "int64",
+        "t_end": "int64",
+        "p_axis": "int64",
+        "qrs_axis": "int64",
+        "t_axis": "int64"
+      },
+      "primary_measurement_columns_present": [
+        "rr_interval",
+        "p_onset",
+        "p_end",
+        "qrs_onset",
+        "qrs_end",
+        "t_end",
+        "p_axis",
+        "qrs_axis",
+        "t_axis"
+      ],
+      "primary_measurement_columns_missing": [],
+      "primary_measurement_missingness_raw": {
+        "rr_interval": {
+          "n_missing_or_non_numeric": 0,
+          "rate_missing_or_non_numeric": 0.0,
+          "n_failed_numeric_conversion": 0,
+          "min": 0.0,
+          "p50": 810.0,
+          "max": 29999.0
+        },
+        "p_onset": {
+          "n_missing_or_non_numeric": 0,
+          "rate_missing_or_non_numeric": 0.0,
+          "n_failed_numeric_conversion": 0,
+          "min": 14.0,
+          "p50": 40.0,
+          "max": 29999.0
+        },
+        "p_end": {
+          "n_missing_or_non_numeric": 0,
+          "rate_missing_or_non_numeric": 0.0,
+          "n_failed_numeric_conversion": 0,
+          "min": 48.0,
+          "p50": 158.0,
+          "max": 29999.0
+        },
+        "qrs_onset": {
+          "n_missing_or_non_numeric": 0,
+          "rate_missing_or_non_numeric": 0.0,
+          "n_failed_numeric_conversion": 0,
+          "min": 0.0,
+          "p50": 202.0,
+          "max": 29999.0
+        },
+        "qrs_end": {
+          "n_missing_or_non_numeric": 0,
+          "rate_missing_or_non_numeric": 0.0,
+          "n_failed_numeric_conversion": 0,
+          "min": 145.0,
+          "p50": 306.0,
+          "max": 29999.0
+        },
+        "t_end": {
+          "n_missing_or_non_numeric": 0,
+          "rate_missing_or_non_numeric": 0.0,
+          "n_failed_numeric_conversion": 0,
+          "min": 342.0,
+          "p50": 614.0,
+          "max": 29999.0
+        },
+        "p_axis": {
+          "n_missing_or_non_numeric": 0,
+          "rate_missing_or_non_numeric": 0.0,
+          "n_failed_numeric_conversion": 0,
+          "min": -154.0,
+          "p50": 56.0,
+          "max": 32767.0
+        },
+        "qrs_axis": {
+          "n_missing_or_non_numeric": 0,
+          "rate_missing_or_non_numeric": 0.0,
+          "n_failed_numeric_conversion": 0,
+          "min": -178.0,
+          "p50": 6.0,
+          "max": 29999.0
+        },
+        "t_axis": {
+          "n_missing_or_non_numeric": 0,
+          "rate_missing_or_non_numeric": 0.0,
+          "n_failed_numeric_conversion": 0,
+          "min": -180.0,
+          "p50": 48.0,
+          "max": 32767.0
+        }
+      },
+      "primary_measurement_distributions": {
+        "rr_interval": {
+          "n_numeric": 2500,
+          "n_unique_numeric": 162,
+          "quantiles": {
+            "p00": 0.0,
+            "p01": 402.94,
+            "p05": 495.0,
+            "p25": 681.0,
+            "p50": 810.0,
+            "p75": 937.0,
+            "p95": 1112.0499999999943,
+            "p99": 1250.2599999999939,
+            "p100": 29999.0
+          },
+          "sentinel_candidate_counts": {
+            "29999": 7,
+            "32767": 0,
+            "-32767": 0,
+            "-32768": 0,
+            "65534": 0,
+            "65535": 0
+          },
+          "most_frequent_values": [
+            {
+              "value": 869.0,
+              "count": 81
+            },
+            {
+              "value": 1000.0,
+              "count": 76
+            },
+            {
+              "value": 882.0,
+              "count": 73
+            },
+            {
+              "value": 952.0,
+              "count": 63
+            },
+            {
+              "value": 833.0,
+              "count": 60
+            },
+            {
+              "value": 845.0,
+              "count": 60
+            },
+            {
+              "value": 779.0,
+              "count": 60
+            },
+            {
+              "value": 750.0,
+              "count": 58
+            }
+          ],
+          "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+        },
+        "p_onset": {
+          "n_numeric": 2500,
+          "n_unique_numeric": 137,
+          "quantiles": {
+            "p00": 14.0,
+            "p01": 40.0,
+            "p05": 40.0,
+            "p25": 40.0,
+            "p50": 40.0,
+            "p75": 328.0,
+            "p95": 29999.0,
+            "p99": 29999.0,
+            "p100": 29999.0
+          },
+          "sentinel_candidate_counts": {
+            "29999": 420,
+            "32767": 0,
+            "-32767": 0,
+            "-32768": 0,
+            "65534": 0,
+            "65535": 0
+          },
+          "most_frequent_values": [
+            {
+              "value": 40.0,
+              "count": 1761
+            },
+            {
+              "value": 29999.0,
+              "count": 420
+            },
+            {
+              "value": 339.0,
+              "count": 9
+            },
+            {
+              "value": 328.0,
+              "count": 9
+            },
+            {
+              "value": 333.0,
+              "count": 8
+            },
+            {
+              "value": 309.0,
+              "count": 7
+            },
+            {
+              "value": 356.0,
+              "count": 7
+            },
+            {
+              "value": 353.0,
+              "count": 7
+            }
+          ],
+          "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+        },
+        "p_end": {
+          "n_numeric": 2500,
+          "n_unique_numeric": 61,
+          "quantiles": {
+            "p00": 48.0,
+            "p01": 104.0,
+            "p05": 118.0,
+            "p25": 144.0,
+            "p50": 158.0,
+            "p75": 29999.0,
+            "p95": 29999.0,
+            "p99": 29999.0,
+            "p100": 29999.0
+          },
+          "sentinel_candidate_counts": {
+            "29999": 737,
+            "32767": 0,
+            "-32767": 0,
+            "-32768": 0,
+            "65534": 0,
+            "65535": 0
+          },
+          "most_frequent_values": [
+            {
+              "value": 29999.0,
+              "count": 737
+            },
+            {
+              "value": 154.0,
+              "count": 100
+            },
+            {
+              "value": 156.0,
+              "count": 97
+            },
+            {
+              "value": 150.0,
+              "count": 93
+            },
+            {
+              "value": 158.0,
+              "count": 93
+            },
+            {
+              "value": 148.0,
+              "count": 90
+            },
+            {
+              "value": 152.0,
+              "count": 82
+            },
+            {
+              "value": 146.0,
+              "count": 73
+            }
+          ],
+          "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+        },
+        "qrs_onset": {
+          "n_numeric": 2500,
+          "n_unique_numeric": 148,
+          "quantiles": {
+            "p00": 0.0,
+            "p01": 106.99000000000001,
+            "p05": 152.0,
+            "p25": 190.0,
+            "p50": 202.0,
+            "p75": 230.0,
+            "p95": 504.0,
+            "p99": 508.0,
+            "p100": 29999.0
+          },
+          "sentinel_candidate_counts": {
+            "29999": 6,
+            "32767": 0,
+            "-32767": 0,
+            "-32768": 0,
+            "65534": 0,
+            "65535": 0
+          },
+          "most_frequent_values": [
+            {
+              "value": 200.0,
+              "count": 383
+            },
+            {
+              "value": 499.0,
+              "count": 79
+            },
+            {
+              "value": 196.0,
+              "count": 59
+            },
+            {
+              "value": 216.0,
+              "count": 59
+            },
+            {
+              "value": 194.0,
+              "count": 59
+            },
+            {
+              "value": 192.0,
+              "count": 55
+            },
+            {
+              "value": 218.0,
+              "count": 55
+            },
+            {
+              "value": 502.0,
+              "count": 55
+            }
+          ],
+          "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+        },
+        "qrs_end": {
+          "n_numeric": 2500,
+          "n_unique_numeric": 242,
+          "quantiles": {
+            "p00": 145.0,
+            "p01": 205.98000000000002,
+            "p05": 246.0,
+            "p25": 282.0,
+            "p50": 306.0,
+            "p75": 344.0,
+            "p95": 606.0,
+            "p99": 652.0099999999998,
+            "p100": 29999.0
+          },
+          "sentinel_candidate_counts": {
+            "29999": 7,
+            "32767": 0,
+            "-32767": 0,
+            "-32768": 0,
+            "65534": 0,
+            "65535": 0
+          },
+          "most_frequent_values": [
+            {
+              "value": 288.0,
+              "count": 75
+            },
+            {
+              "value": 286.0,
+              "count": 64
+            },
+            {
+              "value": 292.0,
+              "count": 55
+            },
+            {
+              "value": 296.0,
+              "count": 55
+            },
+            {
+              "value": 298.0,
+              "count": 54
+            },
+            {
+              "value": 306.0,
+              "count": 53
+            },
+            {
+              "value": 290.0,
+              "count": 51
+            },
+            {
+              "value": 284.0,
+              "count": 50
+            }
+          ],
+          "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+        },
+        "t_end": {
+          "n_numeric": 2500,
+          "n_unique_numeric": 357,
+          "quantiles": {
+            "p00": 342.0,
+            "p01": 408.0,
+            "p05": 486.0,
+            "p25": 570.0,
+            "p50": 614.0,
+            "p75": 668.0,
+            "p95": 923.0,
+            "p99": 1001.0499999999988,
+            "p100": 29999.0
+          },
+          "sentinel_candidate_counts": {
+            "29999": 7,
+            "32767": 0,
+            "-32767": 0,
+            "-32768": 0,
+            "65534": 0,
+            "65535": 0
+          },
+          "most_frequent_values": [
+            {
+              "value": 626.0,
+              "count": 41
+            },
+            {
+              "value": 606.0,
+              "count": 38
+            },
+            {
+              "value": 612.0,
+              "count": 38
+            },
+            {
+              "value": 624.0,
+              "count": 37
+            },
+            {
+              "value": 578.0,
+              "count": 36
+            },
+            {
+              "value": 604.0,
+              "count": 35
+            },
+            {
+              "value": 614.0,
+              "count": 35
+            },
+            {
+              "value": 618.0,
+              "count": 34
+            }
+          ],
+          "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+        },
+        "p_axis": {
+          "n_numeric": 2500,
+          "n_unique_numeric": 183,
+          "quantiles": {
+            "p00": -154.0,
+            "p01": -60.0,
+            "p05": 0.0,
+            "p25": 36.0,
+            "p50": 56.0,
+            "p75": 73.0,
+            "p95": 29999.0,
+            "p99": 29999.0,
+            "p100": 32767.0
+          },
+          "sentinel_candidate_counts": {
+            "29999": 420,
+            "32767": 24,
+            "-32767": 0,
+            "-32768": 0,
+            "65534": 0,
+            "65535": 0
+          },
+          "most_frequent_values": [
+            {
+              "value": 29999.0,
+              "count": 420
+            },
+            {
+              "value": 60.0,
+              "count": 55
+            },
+            {
+              "value": 50.0,
+              "count": 49
+            },
+            {
+              "value": 56.0,
+              "count": 47
+            },
+            {
+              "value": 62.0,
+              "count": 47
+            },
+            {
+              "value": 63.0,
+              "count": 46
+            },
+            {
+              "value": 54.0,
+              "count": 46
+            },
+            {
+              "value": 46.0,
+              "count": 45
+            }
+          ],
+          "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+        },
+        "qrs_axis": {
+          "n_numeric": 2500,
+          "n_unique_numeric": 255,
+          "quantiles": {
+            "p00": -178.0,
+            "p01": -90.0,
+            "p05": -70.05,
+            "p25": -20.0,
+            "p50": 6.0,
+            "p75": 43.0,
+            "p95": 86.0,
+            "p99": 146.0799999999981,
+            "p100": 29999.0
+          },
+          "sentinel_candidate_counts": {
+            "29999": 14,
+            "32767": 0,
+            "-32767": 0,
+            "-32768": 0,
+            "65534": 0,
+            "65535": 0
+          },
+          "most_frequent_values": [
+            {
+              "value": 0.0,
+              "count": 54
+            },
+            {
+              "value": -3.0,
+              "count": 50
+            },
+            {
+              "value": 3.0,
+              "count": 46
+            },
+            {
+              "value": 18.0,
+              "count": 37
+            },
+            {
+              "value": 21.0,
+              "count": 31
+            },
+            {
+              "value": -6.0,
+              "count": 30
+            },
+            {
+              "value": 8.0,
+              "count": 30
+            },
+            {
+              "value": -13.0,
+              "count": 30
+            }
+          ],
+          "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+        },
+        "t_axis": {
+          "n_numeric": 2500,
+          "n_unique_numeric": 321,
+          "quantiles": {
+            "p00": -180.0,
+            "p01": -149.01999999999998,
+            "p05": -65.0,
+            "p25": 18.0,
+            "p50": 48.0,
+            "p75": 79.0,
+            "p95": 143.0,
+            "p99": 251.0299999999993,
+            "p100": 32767.0
+          },
+          "sentinel_candidate_counts": {
+            "29999": 14,
+            "32767": 6,
+            "-32767": 0,
+            "-32768": 0,
+            "65534": 0,
+            "65535": 0
+          },
+          "most_frequent_values": [
+            {
+              "value": 45.0,
+              "count": 38
+            },
+            {
+              "value": 48.0,
+              "count": 32
+            },
+            {
+              "value": 33.0,
+              "count": 30
+            },
+            {
+              "value": 62.0,
+              "count": 29
+            },
+            {
+              "value": 54.0,
+              "count": 29
+            },
+            {
+              "value": 31.0,
+              "count": 28
+            },
+            {
+              "value": 64.0,
+              "count": 28
+            },
+            {
+              "value": 21.0,
+              "count": 28
+            }
+          ],
+          "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+        }
+      }
+    },
+    "identifier_filter": {
+      "rows_before_id_filter": 2500,
+      "rows_missing_ids": 0,
+      "rows_after_id_filter": 2500
+    },
+    "duplicate_studies": {
+      "input_rows": 2500,
+      "policy": "exclude_conflicting_duplicates",
+      "exact_duplicate_rows": 0,
+      "duplicate_study_rows_after_exact_collapse": 0,
+      "conflicting_duplicate_studies": 0,
+      "excluded_conflicting_rows": 0,
+      "rows_after_study_dedup": 2500
+    },
+    "label_alignment": {
+      "measurement_studies": 2500,
+      "label_studies": 2500,
+      "subject_id_mismatches": 0,
+      "studies_missing_labels": 0
+    },
+    "label_eligibility": {
+      "n_before": 2500,
+      "n_after": 2245,
+      "n_excluded_unmapped": 255,
+      "n_excluded_poor_quality_unmapped": 0,
+      "prevalence": [
+        {
+          "label": "NORM",
+          "positives": 456,
+          "negatives": 1789,
+          "prevalence": 0.20311804008908685,
+          "no_positives": false,
+          "no_negatives": false
+        },
+        {
+          "label": "HYP",
+          "positives": 465,
+          "negatives": 1780,
+          "prevalence": 0.2071269487750557,
+          "no_positives": false,
+          "no_negatives": false
+        },
+        {
+          "label": "STTC",
+          "positives": 1022,
+          "negatives": 1223,
+          "prevalence": 0.4552338530066815,
+          "no_positives": false,
+          "no_negatives": false
+        },
+        {
+          "label": "MI",
+          "positives": 580,
+          "negatives": 1665,
+          "prevalence": 0.2583518930957684,
+          "no_positives": false,
+          "no_negatives": false
+        },
+        {
+          "label": "CD",
+          "positives": 957,
+          "negatives": 1288,
+          "prevalence": 0.42628062360801783,
+          "no_positives": false,
+          "no_negatives": false
+        }
+      ]
+    },
+    "split_assignment": {
+      "n_studies_in_frame": 2245,
+      "n_assigned": 523,
+      "n_not_in_manifest": 1722,
+      "n_subjects_assigned": 100,
+      "split_study_counts": {
+        "train": 388,
+        "test": 81,
+        "val": 54
+      },
+      "split_subject_counts": {
+        "train": 70,
+        "test": 15,
+        "val": 15
+      },
+      "n_after_measurement_filter": 523,
+      "split_study_counts_after_measurement_filter": {
+        "train": 388,
+        "test": 81,
+        "val": 54
+      }
+    },
+    "measurement_eligibility": {
+      "min_valid_primary_features": 1,
+      "n_before": 523,
+      "n_after": 523,
+      "n_excluded_no_usable_measurements": 0,
+      "primary_columns": [
+        "rr_interval",
+        "p_onset",
+        "p_end",
+        "qrs_onset",
+        "qrs_end",
+        "t_end",
+        "p_axis",
+        "qrs_axis",
+        "t_axis"
+      ]
+    }
+  },
+  "label_info": {
+    "label_order": [
+      "NORM",
+      "HYP",
+      "STTC",
+      "MI",
+      "CD"
+    ],
+    "mapping_version": "1.0.0",
+    "source": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/artifacts/labels.csv",
+    "weak_labels": true,
+    "clinically_verified": false,
+    "uncertain_policy": "positive_weak",
+    "reused_shared_artifact": true
+  },
+  "importance_tables": {
+    "random_forest": "random_forest_permutation_importance.csv",
+    "xgboost": "xgboost_permutation_importance.csv",
+    "logistic_regression": "logistic_regression_permutation_importance.csv"
+  },
+  "output_dir": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/outputs/model_2b_measurement_only"
+}

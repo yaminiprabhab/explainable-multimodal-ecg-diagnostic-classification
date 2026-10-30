@@ -1,0 +1,145 @@
+{
+  "input_rows": 2500,
+  "steps": [
+    {
+      "step": "loaded",
+      "n": 2500
+    },
+    {
+      "step": "after_missing_id_drop",
+      "n": 2500
+    },
+    {
+      "step": "after_study_dedup",
+      "n": 2500
+    },
+    {
+      "step": "after_label_alignment",
+      "n": 2500
+    },
+    {
+      "step": "after_label_eligibility",
+      "n": 2245
+    },
+    {
+      "step": "after_shared_split_inner_join",
+      "n": 523
+    },
+    {
+      "step": "after_measurement_eligibility",
+      "n": 523
+    }
+  ],
+  "identifier_filter": {
+    "rows_before_id_filter": 2500,
+    "rows_missing_ids": 0,
+    "rows_after_id_filter": 2500
+  },
+  "duplicate_studies": {
+    "input_rows": 2500,
+    "policy": "exclude_conflicting_duplicates",
+    "exact_duplicate_rows": 0,
+    "duplicate_study_rows_after_exact_collapse": 0,
+    "conflicting_duplicate_studies": 0,
+    "excluded_conflicting_rows": 0,
+    "rows_after_study_dedup": 2500
+  },
+  "label_alignment": {
+    "measurement_studies": 2500,
+    "label_studies": 2500,
+    "subject_id_mismatches": 0,
+    "studies_missing_labels": 0
+  },
+  "label_eligibility": {
+    "n_before": 2500,
+    "n_after": 2245,
+    "n_excluded_unmapped": 255,
+    "n_excluded_poor_quality_unmapped": 0,
+    "prevalence": [
+      {
+        "label": "NORM",
+        "positives": 456,
+        "negatives": 1789,
+        "prevalence": 0.20311804008908685,
+        "no_positives": false,
+        "no_negatives": false
+      },
+      {
+        "label": "HYP",
+        "positives": 465,
+        "negatives": 1780,
+        "prevalence": 0.2071269487750557,
+        "no_positives": false,
+        "no_negatives": false
+      },
+      {
+        "label": "STTC",
+        "positives": 1022,
+        "negatives": 1223,
+        "prevalence": 0.4552338530066815,
+        "no_positives": false,
+        "no_negatives": false
+      },
+      {
+        "label": "MI",
+        "positives": 580,
+        "negatives": 1665,
+        "prevalence": 0.2583518930957684,
+        "no_positives": false,
+        "no_negatives": false
+      },
+      {
+        "label": "CD",
+        "positives": 957,
+        "negatives": 1288,
+        "prevalence": 0.42628062360801783,
+        "no_positives": false,
+        "no_negatives": false
+      }
+    ]
+  },
+  "measurement_eligibility": {
+    "min_valid_primary_features": 1,
+    "n_before": 523,
+    "n_after": 523,
+    "n_excluded_no_usable_measurements": 0,
+    "primary_columns": [
+      "rr_interval",
+      "p_onset",
+      "p_end",
+      "qrs_onset",
+      "qrs_end",
+      "t_end",
+      "p_axis",
+      "qrs_axis",
+      "t_axis"
+    ]
+  },
+  "split_assignment": {
+    "n_studies_in_frame": 2245,
+    "n_assigned": 523,
+    "n_not_in_manifest": 1722,
+    "n_subjects_assigned": 100,
+    "split_study_counts": {
+      "train": 388,
+      "test": 81,
+      "val": 54
+    },
+    "split_subject_counts": {
+      "train": 70,
+      "test": 15,
+      "val": 15
+    },
+    "n_after_measurement_filter": 523,
+    "split_study_counts_after_measurement_filter": {
+      "train": 388,
+      "test": 81,
+      "val": 54
+    }
+  },
+  "final_train": 388,
+  "final_val": 54,
+  "final_test": 81,
+  "final_test_patients": 15,
+  "note": "When the Model 2 patient_split_manifest is reused, Model 2B is restricted to that working cohort (text-eligible studies after leakage masking), then further restricted by measurement eligibility."
+}

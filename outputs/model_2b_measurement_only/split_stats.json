@@ -1,0 +1,81 @@
+{
+  "shared_split_reused": true,
+  "train": {
+    "n_studies": 388,
+    "n_subjects": 70,
+    "label_prevalence": {
+      "NORM": {
+        "n_pos": 105,
+        "prevalence": 0.2706185567010309
+      },
+      "HYP": {
+        "n_pos": 87,
+        "prevalence": 0.22422680412371135
+      },
+      "STTC": {
+        "n_pos": 150,
+        "prevalence": 0.3865979381443299
+      },
+      "MI": {
+        "n_pos": 108,
+        "prevalence": 0.27835051546391754
+      },
+      "CD": {
+        "n_pos": 79,
+        "prevalence": 0.2036082474226804
+      }
+    }
+  },
+  "val": {
+    "n_studies": 54,
+    "n_subjects": 15,
+    "label_prevalence": {
+      "NORM": {
+        "n_pos": 12,
+        "prevalence": 0.2222222222222222
+      },
+      "HYP": {
+        "n_pos": 8,
+        "prevalence": 0.14814814814814814
+      },
+      "STTC": {
+        "n_pos": 27,
+        "prevalence": 0.5
+      },
+      "MI": {
+        "n_pos": 13,
+        "prevalence": 0.24074074074074073
+      },
+      "CD": {
+        "n_pos": 16,
+        "prevalence": 0.2962962962962963
+      }
+    }
+  },
+  "test": {
+    "n_studies": 81,
+    "n_subjects": 15,
+    "label_prevalence": {
+      "NORM": {
+        "n_pos": 14,
+        "prevalence": 0.1728395061728395
+      },
+      "HYP": {
+        "n_pos": 21,
+        "prevalence": 0.25925925925925924
+      },
+      "STTC": {
+        "n_pos": 33,
+        "prevalence": 0.4074074074074074
+      },
+      "MI": {
+        "n_pos": 13,
+        "prevalence": 0.16049382716049382
+      },
+      "CD": {
+        "n_pos": 30,
+        "prevalence": 0.37037037037037035
+      }
+    }
+  }
+}

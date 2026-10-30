@@ -1,0 +1,6 @@
+label,false_positives,false_negatives
+NORM,7,12
+HYP,22,11
+STTC,11,9
+MI,56,6
+CD,3,2

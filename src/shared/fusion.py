@@ -156,8 +156,13 @@ def load_encoder_subsets(model: nn.Module, ecg_ckpt: Path | None, text_ckpt: Pat
         notes["ecg_unexpected"] = list(unexpected)
     if text_ckpt and Path(text_ckpt).exists():
         state = torch.load(text_ckpt, map_location=device, weights_only=False)["model_state"]
-        missing, unexpected = model.text_encoder.load_state_dict(state, strict=False)
-        notes["text_ckpt"] = str(text_ckpt)
-        notes["text_missing"] = list(missing)
-        notes["text_unexpected"] = list(unexpected)
+        try:
+            missing, unexpected = model.text_encoder.load_state_dict(state, strict=False)
+            notes["text_ckpt"] = str(text_ckpt)
+            notes["text_missing"] = list(missing)
+            notes["text_unexpected"] = list(unexpected)
+        except RuntimeError as exc:
+            # Fusion vocab is rebuilt on the waveform-eligible subset; skip if sizes differ.
+            notes["text_ckpt_skipped"] = str(text_ckpt)
+            notes["text_ckpt_skip_reason"] = str(exc)
     return notes

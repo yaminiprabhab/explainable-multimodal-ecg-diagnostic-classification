@@ -75,23 +75,24 @@ Model 2 is the **source of truth** for labels + split + residual text. Models 1/
 
 ---
 
-## Getting the data (how it actually arrives)
-Nothing in git is the MIMIC clinical table or the 12-lead signals. You pull them from **PhysioNet** under a data-use agreement, then the pipelines read local files from the **repository root**.
+## Getting the data (keep it simple)
 
-**Dataset:** [MIMIC-IV-ECG Diagnostic Electrocardiogram Matched Subset v1.0](https://physionet.org/content/mimic-iv-ecg/1.0/). Controlled-access. Typical path: PhysioNet account → CITI “Data or Specimens Only Research” → sign the MIMIC-IV-ECG DUA → download. Follow PhysioNet’s current instructions; do not commit PHI, report text, or waveforms.
+[PhysioNet MIMIC-IV-ECG v1.0](https://physionet.org/content/mimic-iv-ecg/1.0/). Follow their license.
 
-Two **different** PhysioNet products, used for different models:
+**On this branch the laptop slice is in git** (not the full ~800k records):
 
-| What you download | Size / shape | Where to put it | Who uses it |
-| --- | --- | --- | --- |
-| **`machine_measurements.csv`** | One table, ~800k studies. IDs + `report_*` text + numeric cart measurements | Repo root: `machine_measurements.csv` | **Model 2** (reports → labels + residual text), **Model 2B** (numeric columns only) |
-| **12-lead WFDB records** | Per-study `.hea` + `.dat` (~10 s @ 500 Hz → we use `(12, 5000)`) | `waveforms/` (`waveform_root`) | **Models 1, 3, 4** only |
+| Path | What |
+| --- | --- |
+| `machine_measurements.csv` | 2500-row table → Models **2** and **2B** |
+| `waveforms/files/...` | ~69 WFDB records → **1 / 3 / 4** |
+| `artifacts/labels.csv`, `patient_split_manifest.csv`, `cohort_manifest.csv` | Frozen slice labels/split/residual text |
+| `outputs/comparison/comparison.md` | Fair 15-study table |
+| `outputs/model_1_ecg_only/explanations/*.png` | ECG occlusion plots |
+| `outputs/model_3_concat_fusion/explanations/*.png` | Concat fusion occlusion |
+| `outputs/model_4_attention_fusion/explanations/*.png` | Gated fusion occlusion |
+| `outputs/model_2b_measurement_only/xgboost_permutation_importance.png` | 2B importance plot |
 
-**Do not download all ~800k waveform folders.** Model 2/2B never open those files. After Model 2 freezes a working cohort (default ~8000 studies), run `python scripts/list_waveform_downloads.py` and fetch **only** those `files/pXXXX/p{subject_id}/s{study_id}/` records (PhysioNet login). You can lower `working_cohort_max_studies` **before** freezing if even 8000 files is too many. Models 1/3/4 **drop missing files**; they do not rebuild the split.
-
-Commands and wget example: [running.md](running.md). Model 2 CSV details: [model2_exp.md](model2_exp.md).
-
-Until those files exist, `--smoke` / `pytest` use **synthetic** rows and arrays (`src/shared/smoke.py`). That checks code, not science.
+`--smoke` still needs no extra files. Commands: [running.md](running.md).
 
 ---
 
@@ -110,7 +111,7 @@ machine_measurements.csv
    • load reports + IDs
    • rule-based labels     → artifacts/labels.csv  (+ labels_full.csv)
    • mask trigger phrases  → residual clinical_text
-   • sample working cohort → ~8000 studies (patient-stratified, seed 42)
+   • sample working cohort → config cap (500 here; seed 42)
    • patient split 70/15/15→ artifacts/patient_split_manifest.csv
    • cohort + residual text→ artifacts/cohort_manifest.csv
    • train text LSTM       → outputs/model_2_text_only/
@@ -368,7 +369,7 @@ They need Model 2 **artifacts** (labels/split/text). Checkpoints from Models 1 a
 
 ### What does “working cohort” mean?
 
-Full MIMIC-IV-ECG has on the order of **~800k** studies. Labeling can run on all rows; training uses a **patient-sampled** subset (config `working_cohort_max_studies`, default **8000**) so CNN/fusion fits compute budgets. Only intentionally regenerate the shared split if replacing that cohort.
+Full MIMIC-IV-ECG has on the order of **~800k** studies. You do **not** need all of them. This checkout keeps a **small local CSV slice** and `working_cohort_max_studies: **500**`. Raise that only if you want a larger experiment; do not regenerate the shared split after seeing test metrics.
 
 ### What is `--smoke`?
 
@@ -388,27 +389,65 @@ Suspect residual leakage (synonyms, templates, correlated rhythm language) befor
 
 ---
 
+## Laptop slice (2026-10-31) — numbers you can cite locally
+
+Not the published ~8k Model 2 write-up. Local files only (gitignored).
+
+- CSV: 2500 rows → Model 2 working cohort ~500 studies (test n=81 for text-only metrics).
+- Waveforms: ~69 usable records spanning train/val/test.
+- Fair table: **15** common test studies with text **and** a waveform (`outputs/comparison/comparison.md`).
+
+| Model | Macro F1 (own test) | Macro F1 (common 15) |
+| --- | ---: | ---: |
+| 2 text LSTM | 0.429 (n=81) | 0.392 |
+| 2B XGBoost / RF / logistic | RF 0.460, XGB 0.472, LR 0.428 | 2B 0.463 |
+| 1 ECG CNN | 0.325 | 0.325 |
+| 3 concat | 0.264 | 0.264 |
+| 4 gated | 0.348 | 0.348 |
+
+**Do not** treat this as a ranking of architectures. n=15, weak labels, residual leakage, 2B may echo the same cart as the reports. Fusion skipped the Model 2 text checkpoint here because vocab size differed on the waveform subset.
+
+---
+
+## What to put in the report (and what to leave out)
+
+**Put in**
+
+1. Research question: does ECG + residual text beat ECG-only or text-only on five weak labels; concat vs gated fusion.
+2. Data: MIMIC-IV-ECG v1.0. One CSV (`report_*` + measurements). Optional 12-lead WFDB. Patient-level split, seed 42. **State the cohort size you actually used** (this laptop: 2500 CSV rows / ~500 train cohort / 15 common test studies).
+3. Labels: five multi-label weak rules from reports (`label_mapping.yaml` v1.0.0), **not** cardiologist diagnoses.
+4. Leakage control: mask trigger phrases; residual text still can leak; IDs never features; thresholds on val only.
+5. Models in one table: 1 CNN, 2 LSTM, 2B tabular (extra), 3 concat, 4 gates.
+6. Metrics: macro/micro F1, maybe AUROC. Use the **common-cohort** table for comparing models.
+7. Explainability: occlusion (ECG windows/leads, text tokens). Gates ≠ causal explanation.
+8. Limitations: small slice, weak labels, possible 2B/report correlation, no clinical use.
+
+**Leave out**
+
+- Smoke F1 numbers.
+- The full 800k download story.
+- Claiming fusion “won” or clinical accuracy from n=15.
+- Patient IDs in figures (use `example_id`).
+
+Longer Model 2 write-up (larger historical run): [model2.md](model2.md). Protocol: [comparison.md](comparison.md).
+
+---
+
 ## Current implementation status (snapshot)
 
-*Update this when status changes. Last snapshot: 2026-10-30.*
+*Last snapshot: 2026-10-31.*
 
 | Area | Status |
 | ---- | ------ |
 | Modular layout | `src/`, `configs/`, `tests/`, `scripts/`, `docs/` |
 | Label mapping v1.0.0 | Committed at `artifacts/label_mapping.yaml` |
-| Model 2 text LSTM | **Real-data run** (~7,378 studies after masking); see `docs/model2.md` |
-| Model 2B tabular | **Real-data run** on the same frozen split; extra baseline, not Model 1 |
-| Model 1 ECG CNN | Code + smoke tests; **no real WFDB numbers in-repo** |
-| Model 3 concat fusion | Code + smoke tests; needs local waveforms |
-| Model 4 gated fusion | Code + smoke tests; needs local waveforms |
-| Comparison runner | `scripts/compare_models.py` joins `test_predictions.csv` |
-| Local venv | `.venv/` (gitignored); `source .venv/bin/activate` then `pip install -e ".[dev]"` |
-| Pytest | Suite under `tests/`; run with the venv Python |
-| Full multimodal results | Blocked on local MIMIC-IV-ECG waveforms for the frozen cohort |
+| Model 2 text LSTM | Historical ~7k run in `docs/model2.md`; **laptop slice** 2026-10-31 also ran |
+| Model 2B tabular | Laptop slice on the same frozen split |
+| Model 1 / 3 / 4 | Laptop slice on ~69 local waveforms (15 common test studies) |
+| Comparison + plots | Tracked under `outputs/` on this branch (see paths above) |
+| Local venv | `.venv/`; `source .venv/bin/activate` |
 | Final slides | Not started |
-| Clinical deployment | Out of scope — research only |
-
-**What is still left for the science:** download/index 12-lead files for the frozen split → train Models 1, 3, 4 → run `scripts/compare_models.py` → write the four-model table and limitations. Do not retune mapping or the patient split after seeing those test numbers.
+| Clinical deployment | Out of scope |
 
 ---
 
@@ -425,6 +464,10 @@ When an agent changes **anything** in this repo:
 
 ## Changelog
 
+- **2026-10-31 (slice in git)** — Tracked the laptop CSV, waveforms, artifacts (not smoke bundles), and `outputs/` (comparison + plots + metrics). Documented exact report file paths. Still not the full MIMIC dump.
+- **2026-10-31 (laptop slice + simple data)** — Ran 2, 2B, 1, 3, 4 on the small CSV + ~69 waveforms; comparison n=15. Fusion skips a Model 2 checkpoint when vocab size differs. Running/study data sections shortened to: CSV in root, optional waveforms folder, same `python -m` commands. Added report checklist.
+- **2026-10-31 (numpy shuffle)** — `sample_working_cohort` copies patient-id arrays before `RandomState.shuffle` (NumPy 2 / pandas 3 mark index arrays read-only). Needed for the small real CSV run.
+- **2026-10-31 (small local slice)** — Stopped the full 174 MB CSV download. Kept ~2500 complete rows in gitignored `machine_measurements.csv` and set `working_cohort_max_studies: 500` so a laptop run is enough. Not the published ~8k Model 2 cohort.
 - **2026-10-31 (data flow in study)** — Added how data is obtained (PhysioNet DUA, `machine_measurements.csv` vs subset WFDB), the end-to-end flow, and a table of what each model actually reads. This was previously only sketched as a diagram and split across running.md / model2_exp.md.
 - **2026-10-31 (waveforms subset)** — Documented that ~800k WFDB files are not required: working cohort (~8000 by default, configurable *before* freeze), `scripts/list_waveform_downloads.py` for PhysioNet URL lists, and Models 1/3/4 dropping missing files. See [running.md](running.md).
 - **2026-10-30 (running docs)** — Added `docs/running.md` as the how-to-run guide (venv, `pip install -e ".[dev]"`, data files, Model 2→2B→1→3→4→compare, smoke/pytest). Linked it from README, docs index, comparison, Model 2 write-up, per-model notes, and this file.

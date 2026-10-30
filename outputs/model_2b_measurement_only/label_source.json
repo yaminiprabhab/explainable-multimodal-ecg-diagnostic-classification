@@ -1,0 +1,17 @@
+{
+  "label_order": [
+    "NORM",
+    "HYP",
+    "STTC",
+    "MI",
+    "CD"
+  ],
+  "mapping_version": "1.0.0",
+  "source": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/artifacts/labels.csv",
+  "weak_labels": true,
+  "clinically_verified": false,
+  "uncertain_policy": "positive_weak",
+  "reused_shared_artifact": true,
+  "n_label_rows": 2500,
+  "note": "Targets are reused from Model 2 mapping version 1.0.0 when the shared artifact exists; otherwise they are regenerated with the same LabelMapper. Report text is not used as a Model 2B feature."
+}

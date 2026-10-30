@@ -1,0 +1,6 @@
+label,positives,negatives,prevalence,no_positives,no_negatives
+NORM,456,2044,0.1824,False,False
+HYP,465,2035,0.186,False,False
+STTC,1022,1478,0.4088,False,False
+MI,580,1920,0.232,False,False
+CD,957,1543,0.3828,False,False

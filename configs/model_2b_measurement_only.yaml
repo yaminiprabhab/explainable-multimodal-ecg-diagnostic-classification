@@ -16,7 +16,7 @@ data:
   min_valid_primary_features: 1
   use_shared_labels: true
   use_shared_split: true
-  working_cohort_max_studies: 8000
+  working_cohort_max_studies: 500
 
 features:
   primary:

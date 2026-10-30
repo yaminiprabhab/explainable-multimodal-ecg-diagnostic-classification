@@ -1,0 +1,27 @@
+{
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.7728556820324489,
+      "val_loss": 0.8591096746294122
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.630861074583871,
+      "val_loss": 1.0057909300452785
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.5608409472874233,
+      "val_loss": 1.2425717617336072
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.4676436688218798,
+      "val_loss": 1.2002189284876774
+    }
+  ],
+  "best_val_loss": 0.8591096746294122,
+  "epochs_run": 4,
+  "checkpoint": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/outputs/model_4_attention_fusion/best_model.pt"
+}

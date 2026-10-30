@@ -9,7 +9,7 @@ data:
   id_columns: [subject_id, study_id]
   report_prefix: report_
   text_separator: " | "
-  working_cohort_max_studies: 8000
+  working_cohort_max_studies: 500
   require_at_least_one_label: true
   exclude_poor_quality_only_records: true
 

@@ -1,0 +1,53 @@
+{
+  "thresholds": [
+    0.7,
+    0.7,
+    0.39999999999999997,
+    0.6,
+    0.6
+  ],
+  "label_order": [
+    "NORM",
+    "HYP",
+    "STTC",
+    "MI",
+    "CD"
+  ],
+  "notes": [
+    {
+      "label": "NORM",
+      "reason": "per_label_f1",
+      "val_positives": 12,
+      "threshold": 0.7,
+      "val_f1_at_threshold": 0.7407407407407407
+    },
+    {
+      "label": "HYP",
+      "reason": "per_label_f1",
+      "val_positives": 8,
+      "threshold": 0.7,
+      "val_f1_at_threshold": 0.47058823529411764
+    },
+    {
+      "label": "STTC",
+      "reason": "per_label_f1",
+      "val_positives": 27,
+      "threshold": 0.39999999999999997,
+      "val_f1_at_threshold": 0.7586206896551724
+    },
+    {
+      "label": "MI",
+      "reason": "per_label_f1",
+      "val_positives": 13,
+      "threshold": 0.6,
+      "val_f1_at_threshold": 0.6666666666666666
+    },
+    {
+      "label": "CD",
+      "reason": "per_label_f1",
+      "val_positives": 16,
+      "threshold": 0.6,
+      "val_f1_at_threshold": 0.8275862068965517
+    }
+  ]
+}

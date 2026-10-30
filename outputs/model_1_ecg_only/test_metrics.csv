@@ -1,0 +1,11 @@
+metric,value
+n_studies,15
+n_subjects,2
+macro_f1,0.32487394957983196
+micro_f1,0.43333333333333335
+macro_precision,0.24857142857142853
+macro_recall,0.56
+micro_precision,0.3170731707317073
+micro_recall,0.6842105263157895
+macro_auroc,0.5799074074074074
+macro_auprc,0.49061910311910306

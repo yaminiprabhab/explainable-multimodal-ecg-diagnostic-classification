@@ -1,0 +1,179 @@
+{
+  "validity_config": {
+    "timing_sentinels": [
+      29999,
+      32767,
+      65534,
+      65535
+    ],
+    "axis_sentinels": [
+      29999,
+      32767,
+      -32767,
+      -32768,
+      65534,
+      65535
+    ],
+    "fiducial_min_ms": 0,
+    "fiducial_max_ms": 10000,
+    "rr_min_ms": 0,
+    "rr_max_ms": 10000,
+    "axis_min_deg": -180,
+    "axis_max_deg": 180,
+    "require_positive_derived_intervals": true
+  },
+  "units": {
+    "rr_interval": "milliseconds, R-R cycle length",
+    "p_onset": "milliseconds, P-wave onset time position in the ECG window",
+    "p_end": "milliseconds, P-wave end time position",
+    "qrs_onset": "milliseconds, QRS onset time position",
+    "qrs_end": "milliseconds, QRS end time position",
+    "t_end": "milliseconds, T-wave end time position",
+    "p_axis": "degrees, frontal-plane P axis",
+    "qrs_axis": "degrees, frontal-plane QRS axis",
+    "t_axis": "degrees, frontal-plane T axis",
+    "pr_interval": "milliseconds, p_end - p_onset when both valid and p_end > p_onset",
+    "qrs_duration": "milliseconds, qrs_end - qrs_onset when both valid and qrs_end > qrs_onset",
+    "qt_interval": "milliseconds, t_end - qrs_onset when both valid and t_end > qrs_onset"
+  },
+  "column_audit": {
+    "rr_interval": {
+      "failed_conversions": 0,
+      "original_missing": 0,
+      "sentinel": 0,
+      "out_of_range": 0,
+      "nonpositive_rr": 0,
+      "final_missing": 0,
+      "replaced_with_missing": 0
+    },
+    "p_onset": {
+      "failed_conversions": 0,
+      "original_missing": 0,
+      "sentinel": 27,
+      "out_of_range": 0,
+      "nonpositive_rr": 0,
+      "final_missing": 27,
+      "replaced_with_missing": 27
+    },
+    "p_end": {
+      "failed_conversions": 0,
+      "original_missing": 0,
+      "sentinel": 88,
+      "out_of_range": 0,
+      "nonpositive_rr": 0,
+      "final_missing": 88,
+      "replaced_with_missing": 88
+    },
+    "qrs_onset": {
+      "failed_conversions": 0,
+      "original_missing": 0,
+      "sentinel": 0,
+      "out_of_range": 0,
+      "nonpositive_rr": 0,
+      "final_missing": 0,
+      "replaced_with_missing": 0
+    },
+    "qrs_end": {
+      "failed_conversions": 0,
+      "original_missing": 0,
+      "sentinel": 0,
+      "out_of_range": 0,
+      "nonpositive_rr": 0,
+      "final_missing": 0,
+      "replaced_with_missing": 0
+    },
+    "t_end": {
+      "failed_conversions": 0,
+      "original_missing": 0,
+      "sentinel": 0,
+      "out_of_range": 0,
+      "nonpositive_rr": 0,
+      "final_missing": 0,
+      "replaced_with_missing": 0
+    },
+    "p_axis": {
+      "failed_conversions": 0,
+      "original_missing": 0,
+      "sentinel": 34,
+      "out_of_range": 0,
+      "final_missing": 34,
+      "replaced_with_missing": 34
+    },
+    "qrs_axis": {
+      "failed_conversions": 0,
+      "original_missing": 0,
+      "sentinel": 1,
+      "out_of_range": 0,
+      "final_missing": 1,
+      "replaced_with_missing": 1
+    },
+    "t_axis": {
+      "failed_conversions": 0,
+      "original_missing": 0,
+      "sentinel": 1,
+      "out_of_range": 3,
+      "final_missing": 4,
+      "replaced_with_missing": 4
+    }
+  },
+  "derived": {
+    "pr_interval": {
+      "formula": "p_end - p_onset",
+      "n_defined": 435,
+      "n_missing": 88,
+      "n_nonpositive_when_both_present": 0,
+      "retained": true
+    },
+    "qrs_duration": {
+      "formula": "qrs_end - qrs_onset",
+      "n_defined": 523,
+      "n_missing": 0,
+      "n_nonpositive_when_both_present": 0,
+      "retained": true
+    },
+    "qt_interval": {
+      "formula": "t_end - qrs_onset",
+      "n_defined": 523,
+      "n_missing": 0,
+      "n_nonpositive_when_both_present": 0,
+      "retained": true
+    }
+  },
+  "sentinel_policy_uncertainty": {
+    "official_codebook_in_repo": false,
+    "primary_policy": "replace documented 16-bit and 29999 encodings plus range bounds with missing",
+    "sensitivity_note": "If only 29999 were invalid, remaining 32767/65534/65535 counts are recorded per column in column_audit.sentinel. Those encodings are still treated as missing in the primary experiment because they are not plausible timing or axis values at the documented units."
+  },
+  "notes": [
+    "MIMIC-IV-ECG documents onset/end fields as time positions in msec, not as precomputed durations.",
+    "29999 and 32767 appear as unavailable machine encodings in the public PhysioNet sample and as 16-bit sentinels.",
+    "Fiducials outside 0-10000 ms fall outside a 10-second recording window.",
+    "Electrical axis values outside [-180, 180] degrees are treated as invalid frontal-plane angles.",
+    "report_*, identifiers, bandwidth, and filtering are never features."
+  ],
+  "circular_axes": {
+    "method": "sin/cos of imputed axis degrees, computed after training-only median imputation",
+    "reason": "Frontal-plane axes are circular; -179 and +179 are adjacent angles.",
+    "applied_in": "preprocessing.FittedPreprocessor after imputation",
+    "source_columns": [
+      "p_axis",
+      "qrs_axis",
+      "t_axis"
+    ],
+    "note": "Sin/cos are not computed on raw missing axes. Computing them before imputation would impute sine and cosine independently and could yield pairs that are not on the unit circle."
+  },
+  "final_feature_list": [
+    "rr_interval",
+    "p_onset",
+    "p_end",
+    "qrs_onset",
+    "qrs_end",
+    "t_end",
+    "p_axis",
+    "qrs_axis",
+    "t_axis",
+    "pr_interval",
+    "qrs_duration",
+    "qt_interval"
+  ]
+}

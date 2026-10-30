@@ -1,0 +1,47 @@
+{
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.8312427418572562,
+      "val_loss": 0.9013561700519762
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.6843193514006478,
+      "val_loss": 0.8955481491590801
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.6776631951332093,
+      "val_loss": 0.8911940110357184
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.609409853390285,
+      "val_loss": 0.8825530692150718
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.5332695756639753,
+      "val_loss": 0.8565663287514135
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.48386550630841935,
+      "val_loss": 0.840896957799008
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.43777613980429514,
+      "val_loss": 0.8349348432139346
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.5096976416451591,
+      "val_loss": 0.8257233469109786
+    }
+  ],
+  "best_val_loss": 0.8257233469109786,
+  "epochs_run": 8,
+  "checkpoint": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/outputs/model_1_ecg_only/best_model.pt"
+}

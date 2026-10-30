@@ -141,7 +141,7 @@ def sample_working_cohort(
     # Stratified shuffle of patients, then greedily add all of a patient's studies.
     grouped_ids = {}
     for key in keys.unique():
-        ids = keys.index[keys == key].to_numpy()
+        ids = np.array(keys.index[keys == key].to_numpy(), copy=True)
         rng.shuffle(ids)
         grouped_ids[key] = list(ids)
     # Round-robin over strata to preserve rare labels.

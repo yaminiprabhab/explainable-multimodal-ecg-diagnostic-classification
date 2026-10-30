@@ -18,9 +18,10 @@ src/         Python packages: shared, model_1…model_4, model_2b
 tests/       pytest suite (synthetic smoke only)
 scripts/     compare_models.py, list_waveform_downloads.py
 docs/        write-ups and per-model notes
-artifacts/   frozen mapping + local labels/splits (CSVs gitignored)
-outputs/     run products (gitignored)
-waveforms/   local WFDB or .npy for the frozen split only (gitignored; not all 800k)
+artifacts/   mapping + laptop-slice labels/split (smoke bundles gitignored)
+outputs/     laptop-slice metrics, comparison.md, explanation PNGs
+waveforms/   small WFDB subset for that slice (not all 800k)
+machine_measurements.csv  2500-row PhysioNet slice (not the full table)
 ```
 
 **How to run (venv, data, order of models):** [docs/running.md](docs/running.md).
@@ -73,7 +74,7 @@ Shared protocol lives in `src/shared/` (labels, split join, metrics, waveforms, 
 
 **Dataset:** MIMIC-IV-ECG Diagnostic Electrocardiogram Matched Subset, version 1.0 ([PhysioNet](https://physionet.org/content/mimic-iv-ecg/1.0/), credentialed). **How you obtain files, what goes on disk, and which model reads which columns/waveforms:** [docs/study.md](docs/study.md#getting-the-data-how-it-actually-arrives). Commands: [docs/running.md](docs/running.md).
 
-The dataset contains diagnostic ECG recordings linked to associated clinical information. The project uses a manageable subset of records with corresponding textual information to accommodate available computational resources and the project timeline. You do **not** download all ~800k waveform files.
+The dataset contains diagnostic ECG recordings linked to associated clinical information. **This branch ships a small slice** (`machine_measurements.csv`, `waveforms/`, `outputs/`) so you can inspect the table and plots without the full PhysioNet dump. Cite MIMIC-IV-ECG v1.0. Not for clinical use.
 
 ### Dataset characteristics
 

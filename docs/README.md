@@ -6,8 +6,8 @@ Living overview (including **how to get MIMIC data and how each model uses it**)
 
 | File | Contents |
 | --- | --- |
-| [running.md](running.md) | Environment, data, waveform subset (not 800k files), pipeline commands |
-| [study.md](study.md) | Research question, models, leakage, status, Q&A |
+| [running.md](running.md) | Venv, one CSV, optional waveforms, pipeline commands |
+| [study.md](study.md) | Research question, laptop-slice **paths in git**, numbers, **report checklist** |
 | [comparison.md](comparison.md) | Common-cohort comparison protocol |
 | [model2.md](model2.md) | Completed Model 2 real-data write-up |
 | [model2_exp.md](model2_exp.md) | Model 2 data acquisition and preprocessing |

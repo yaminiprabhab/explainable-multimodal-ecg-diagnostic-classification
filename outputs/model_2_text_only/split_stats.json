@@ -1,0 +1,57 @@
+{
+  "by_split": {
+    "test": {
+      "n_studies": 81,
+      "n_subjects": 15,
+      "NORM_prevalence": 0.1728395061728395,
+      "NORM_positives": 14,
+      "HYP_prevalence": 0.25925925925925924,
+      "HYP_positives": 21,
+      "STTC_prevalence": 0.4074074074074074,
+      "STTC_positives": 33,
+      "MI_prevalence": 0.16049382716049382,
+      "MI_positives": 13,
+      "CD_prevalence": 0.37037037037037035,
+      "CD_positives": 30
+    },
+    "train": {
+      "n_studies": 388,
+      "n_subjects": 70,
+      "NORM_prevalence": 0.2706185567010309,
+      "NORM_positives": 105,
+      "HYP_prevalence": 0.22422680412371135,
+      "HYP_positives": 87,
+      "STTC_prevalence": 0.3865979381443299,
+      "STTC_positives": 150,
+      "MI_prevalence": 0.27835051546391754,
+      "MI_positives": 108,
+      "CD_prevalence": 0.2036082474226804,
+      "CD_positives": 79
+    },
+    "val": {
+      "n_studies": 54,
+      "n_subjects": 15,
+      "NORM_prevalence": 0.2222222222222222,
+      "NORM_positives": 12,
+      "HYP_prevalence": 0.14814814814814814,
+      "HYP_positives": 8,
+      "STTC_prevalence": 0.5,
+      "STTC_positives": 27,
+      "MI_prevalence": 0.24074074074074073,
+      "MI_positives": 13,
+      "CD_prevalence": 0.2962962962962963,
+      "CD_positives": 16
+    }
+  },
+  "method": "random_group_split_unstratified",
+  "requested_ratios": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "actual_patient_ratios": {
+    "train": 0.7,
+    "test": 0.15,
+    "val": 0.15
+  }
+}

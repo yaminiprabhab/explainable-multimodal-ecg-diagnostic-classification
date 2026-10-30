@@ -1,0 +1,944 @@
+{
+  "source_validation": {
+    "n_rows": 2500,
+    "n_columns": 33,
+    "columns": [
+      "subject_id",
+      "study_id",
+      "cart_id",
+      "ecg_time",
+      "report_0",
+      "report_1",
+      "report_2",
+      "report_3",
+      "report_4",
+      "report_5",
+      "report_6",
+      "report_7",
+      "report_8",
+      "report_9",
+      "report_10",
+      "report_11",
+      "report_12",
+      "report_13",
+      "report_14",
+      "report_15",
+      "report_16",
+      "report_17",
+      "bandwidth",
+      "filtering",
+      "rr_interval",
+      "p_onset",
+      "p_end",
+      "qrs_onset",
+      "qrs_end",
+      "t_end",
+      "p_axis",
+      "qrs_axis",
+      "t_axis"
+    ],
+    "report_columns": [
+      "report_0",
+      "report_1",
+      "report_2",
+      "report_3",
+      "report_4",
+      "report_5",
+      "report_6",
+      "report_7",
+      "report_8",
+      "report_9",
+      "report_10",
+      "report_11",
+      "report_12",
+      "report_13",
+      "report_14",
+      "report_15",
+      "report_16",
+      "report_17"
+    ],
+    "duplicate_rows": 0,
+    "duplicate_study_id_rows": 0,
+    "unique_subject_id": 450,
+    "unique_study_id": 2500,
+    "missing_subject_id": 0,
+    "missing_study_id": 0,
+    "rows_with_no_report_text": 0,
+    "dtypes": {
+      "subject_id": "int64",
+      "study_id": "int64",
+      "cart_id": "int64",
+      "ecg_time": "str",
+      "report_0": "str",
+      "report_1": "str",
+      "report_2": "str",
+      "report_3": "str",
+      "report_4": "str",
+      "report_5": "str",
+      "report_6": "str",
+      "report_7": "str",
+      "report_8": "str",
+      "report_9": "str",
+      "report_10": "str",
+      "report_11": "str",
+      "report_12": "float64",
+      "report_13": "str",
+      "report_14": "float64",
+      "report_15": "float64",
+      "report_16": "float64",
+      "report_17": "float64",
+      "bandwidth": "str",
+      "filtering": "str",
+      "rr_interval": "int64",
+      "p_onset": "int64",
+      "p_end": "int64",
+      "qrs_onset": "int64",
+      "qrs_end": "int64",
+      "t_end": "int64",
+      "p_axis": "int64",
+      "qrs_axis": "int64",
+      "t_axis": "int64"
+    },
+    "primary_measurement_columns_present": [
+      "rr_interval",
+      "p_onset",
+      "p_end",
+      "qrs_onset",
+      "qrs_end",
+      "t_end",
+      "p_axis",
+      "qrs_axis",
+      "t_axis"
+    ],
+    "primary_measurement_columns_missing": [],
+    "primary_measurement_missingness_raw": {
+      "rr_interval": {
+        "n_missing_or_non_numeric": 0,
+        "rate_missing_or_non_numeric": 0.0,
+        "n_failed_numeric_conversion": 0,
+        "min": 0.0,
+        "p50": 810.0,
+        "max": 29999.0
+      },
+      "p_onset": {
+        "n_missing_or_non_numeric": 0,
+        "rate_missing_or_non_numeric": 0.0,
+        "n_failed_numeric_conversion": 0,
+        "min": 14.0,
+        "p50": 40.0,
+        "max": 29999.0
+      },
+      "p_end": {
+        "n_missing_or_non_numeric": 0,
+        "rate_missing_or_non_numeric": 0.0,
+        "n_failed_numeric_conversion": 0,
+        "min": 48.0,
+        "p50": 158.0,
+        "max": 29999.0
+      },
+      "qrs_onset": {
+        "n_missing_or_non_numeric": 0,
+        "rate_missing_or_non_numeric": 0.0,
+        "n_failed_numeric_conversion": 0,
+        "min": 0.0,
+        "p50": 202.0,
+        "max": 29999.0
+      },
+      "qrs_end": {
+        "n_missing_or_non_numeric": 0,
+        "rate_missing_or_non_numeric": 0.0,
+        "n_failed_numeric_conversion": 0,
+        "min": 145.0,
+        "p50": 306.0,
+        "max": 29999.0
+      },
+      "t_end": {
+        "n_missing_or_non_numeric": 0,
+        "rate_missing_or_non_numeric": 0.0,
+        "n_failed_numeric_conversion": 0,
+        "min": 342.0,
+        "p50": 614.0,
+        "max": 29999.0
+      },
+      "p_axis": {
+        "n_missing_or_non_numeric": 0,
+        "rate_missing_or_non_numeric": 0.0,
+        "n_failed_numeric_conversion": 0,
+        "min": -154.0,
+        "p50": 56.0,
+        "max": 32767.0
+      },
+      "qrs_axis": {
+        "n_missing_or_non_numeric": 0,
+        "rate_missing_or_non_numeric": 0.0,
+        "n_failed_numeric_conversion": 0,
+        "min": -178.0,
+        "p50": 6.0,
+        "max": 29999.0
+      },
+      "t_axis": {
+        "n_missing_or_non_numeric": 0,
+        "rate_missing_or_non_numeric": 0.0,
+        "n_failed_numeric_conversion": 0,
+        "min": -180.0,
+        "p50": 48.0,
+        "max": 32767.0
+      }
+    },
+    "primary_measurement_distributions": {
+      "rr_interval": {
+        "n_numeric": 2500,
+        "n_unique_numeric": 162,
+        "quantiles": {
+          "p00": 0.0,
+          "p01": 402.94,
+          "p05": 495.0,
+          "p25": 681.0,
+          "p50": 810.0,
+          "p75": 937.0,
+          "p95": 1112.0499999999943,
+          "p99": 1250.2599999999939,
+          "p100": 29999.0
+        },
+        "sentinel_candidate_counts": {
+          "29999": 7,
+          "32767": 0,
+          "-32767": 0,
+          "-32768": 0,
+          "65534": 0,
+          "65535": 0
+        },
+        "most_frequent_values": [
+          {
+            "value": 869.0,
+            "count": 81
+          },
+          {
+            "value": 1000.0,
+            "count": 76
+          },
+          {
+            "value": 882.0,
+            "count": 73
+          },
+          {
+            "value": 952.0,
+            "count": 63
+          },
+          {
+            "value": 833.0,
+            "count": 60
+          },
+          {
+            "value": 845.0,
+            "count": 60
+          },
+          {
+            "value": 779.0,
+            "count": 60
+          },
+          {
+            "value": 750.0,
+            "count": 58
+          }
+        ],
+        "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+      },
+      "p_onset": {
+        "n_numeric": 2500,
+        "n_unique_numeric": 137,
+        "quantiles": {
+          "p00": 14.0,
+          "p01": 40.0,
+          "p05": 40.0,
+          "p25": 40.0,
+          "p50": 40.0,
+          "p75": 328.0,
+          "p95": 29999.0,
+          "p99": 29999.0,
+          "p100": 29999.0
+        },
+        "sentinel_candidate_counts": {
+          "29999": 420,
+          "32767": 0,
+          "-32767": 0,
+          "-32768": 0,
+          "65534": 0,
+          "65535": 0
+        },
+        "most_frequent_values": [
+          {
+            "value": 40.0,
+            "count": 1761
+          },
+          {
+            "value": 29999.0,
+            "count": 420
+          },
+          {
+            "value": 339.0,
+            "count": 9
+          },
+          {
+            "value": 328.0,
+            "count": 9
+          },
+          {
+            "value": 333.0,
+            "count": 8
+          },
+          {
+            "value": 309.0,
+            "count": 7
+          },
+          {
+            "value": 356.0,
+            "count": 7
+          },
+          {
+            "value": 353.0,
+            "count": 7
+          }
+        ],
+        "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+      },
+      "p_end": {
+        "n_numeric": 2500,
+        "n_unique_numeric": 61,
+        "quantiles": {
+          "p00": 48.0,
+          "p01": 104.0,
+          "p05": 118.0,
+          "p25": 144.0,
+          "p50": 158.0,
+          "p75": 29999.0,
+          "p95": 29999.0,
+          "p99": 29999.0,
+          "p100": 29999.0
+        },
+        "sentinel_candidate_counts": {
+          "29999": 737,
+          "32767": 0,
+          "-32767": 0,
+          "-32768": 0,
+          "65534": 0,
+          "65535": 0
+        },
+        "most_frequent_values": [
+          {
+            "value": 29999.0,
+            "count": 737
+          },
+          {
+            "value": 154.0,
+            "count": 100
+          },
+          {
+            "value": 156.0,
+            "count": 97
+          },
+          {
+            "value": 150.0,
+            "count": 93
+          },
+          {
+            "value": 158.0,
+            "count": 93
+          },
+          {
+            "value": 148.0,
+            "count": 90
+          },
+          {
+            "value": 152.0,
+            "count": 82
+          },
+          {
+            "value": 146.0,
+            "count": 73
+          }
+        ],
+        "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+      },
+      "qrs_onset": {
+        "n_numeric": 2500,
+        "n_unique_numeric": 148,
+        "quantiles": {
+          "p00": 0.0,
+          "p01": 106.99000000000001,
+          "p05": 152.0,
+          "p25": 190.0,
+          "p50": 202.0,
+          "p75": 230.0,
+          "p95": 504.0,
+          "p99": 508.0,
+          "p100": 29999.0
+        },
+        "sentinel_candidate_counts": {
+          "29999": 6,
+          "32767": 0,
+          "-32767": 0,
+          "-32768": 0,
+          "65534": 0,
+          "65535": 0
+        },
+        "most_frequent_values": [
+          {
+            "value": 200.0,
+            "count": 383
+          },
+          {
+            "value": 499.0,
+            "count": 79
+          },
+          {
+            "value": 196.0,
+            "count": 59
+          },
+          {
+            "value": 216.0,
+            "count": 59
+          },
+          {
+            "value": 194.0,
+            "count": 59
+          },
+          {
+            "value": 192.0,
+            "count": 55
+          },
+          {
+            "value": 218.0,
+            "count": 55
+          },
+          {
+            "value": 502.0,
+            "count": 55
+          }
+        ],
+        "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+      },
+      "qrs_end": {
+        "n_numeric": 2500,
+        "n_unique_numeric": 242,
+        "quantiles": {
+          "p00": 145.0,
+          "p01": 205.98000000000002,
+          "p05": 246.0,
+          "p25": 282.0,
+          "p50": 306.0,
+          "p75": 344.0,
+          "p95": 606.0,
+          "p99": 652.0099999999998,
+          "p100": 29999.0
+        },
+        "sentinel_candidate_counts": {
+          "29999": 7,
+          "32767": 0,
+          "-32767": 0,
+          "-32768": 0,
+          "65534": 0,
+          "65535": 0
+        },
+        "most_frequent_values": [
+          {
+            "value": 288.0,
+            "count": 75
+          },
+          {
+            "value": 286.0,
+            "count": 64
+          },
+          {
+            "value": 292.0,
+            "count": 55
+          },
+          {
+            "value": 296.0,
+            "count": 55
+          },
+          {
+            "value": 298.0,
+            "count": 54
+          },
+          {
+            "value": 306.0,
+            "count": 53
+          },
+          {
+            "value": 290.0,
+            "count": 51
+          },
+          {
+            "value": 284.0,
+            "count": 50
+          }
+        ],
+        "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+      },
+      "t_end": {
+        "n_numeric": 2500,
+        "n_unique_numeric": 357,
+        "quantiles": {
+          "p00": 342.0,
+          "p01": 408.0,
+          "p05": 486.0,
+          "p25": 570.0,
+          "p50": 614.0,
+          "p75": 668.0,
+          "p95": 923.0,
+          "p99": 1001.0499999999988,
+          "p100": 29999.0
+        },
+        "sentinel_candidate_counts": {
+          "29999": 7,
+          "32767": 0,
+          "-32767": 0,
+          "-32768": 0,
+          "65534": 0,
+          "65535": 0
+        },
+        "most_frequent_values": [
+          {
+            "value": 626.0,
+            "count": 41
+          },
+          {
+            "value": 606.0,
+            "count": 38
+          },
+          {
+            "value": 612.0,
+            "count": 38
+          },
+          {
+            "value": 624.0,
+            "count": 37
+          },
+          {
+            "value": 578.0,
+            "count": 36
+          },
+          {
+            "value": 604.0,
+            "count": 35
+          },
+          {
+            "value": 614.0,
+            "count": 35
+          },
+          {
+            "value": 618.0,
+            "count": 34
+          }
+        ],
+        "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+      },
+      "p_axis": {
+        "n_numeric": 2500,
+        "n_unique_numeric": 183,
+        "quantiles": {
+          "p00": -154.0,
+          "p01": -60.0,
+          "p05": 0.0,
+          "p25": 36.0,
+          "p50": 56.0,
+          "p75": 73.0,
+          "p95": 29999.0,
+          "p99": 29999.0,
+          "p100": 32767.0
+        },
+        "sentinel_candidate_counts": {
+          "29999": 420,
+          "32767": 24,
+          "-32767": 0,
+          "-32768": 0,
+          "65534": 0,
+          "65535": 0
+        },
+        "most_frequent_values": [
+          {
+            "value": 29999.0,
+            "count": 420
+          },
+          {
+            "value": 60.0,
+            "count": 55
+          },
+          {
+            "value": 50.0,
+            "count": 49
+          },
+          {
+            "value": 56.0,
+            "count": 47
+          },
+          {
+            "value": 62.0,
+            "count": 47
+          },
+          {
+            "value": 63.0,
+            "count": 46
+          },
+          {
+            "value": 54.0,
+            "count": 46
+          },
+          {
+            "value": 46.0,
+            "count": 45
+          }
+        ],
+        "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+      },
+      "qrs_axis": {
+        "n_numeric": 2500,
+        "n_unique_numeric": 255,
+        "quantiles": {
+          "p00": -178.0,
+          "p01": -90.0,
+          "p05": -70.05,
+          "p25": -20.0,
+          "p50": 6.0,
+          "p75": 43.0,
+          "p95": 86.0,
+          "p99": 146.0799999999981,
+          "p100": 29999.0
+        },
+        "sentinel_candidate_counts": {
+          "29999": 14,
+          "32767": 0,
+          "-32767": 0,
+          "-32768": 0,
+          "65534": 0,
+          "65535": 0
+        },
+        "most_frequent_values": [
+          {
+            "value": 0.0,
+            "count": 54
+          },
+          {
+            "value": -3.0,
+            "count": 50
+          },
+          {
+            "value": 3.0,
+            "count": 46
+          },
+          {
+            "value": 18.0,
+            "count": 37
+          },
+          {
+            "value": 21.0,
+            "count": 31
+          },
+          {
+            "value": -6.0,
+            "count": 30
+          },
+          {
+            "value": 8.0,
+            "count": 30
+          },
+          {
+            "value": -13.0,
+            "count": 30
+          }
+        ],
+        "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+      },
+      "t_axis": {
+        "n_numeric": 2500,
+        "n_unique_numeric": 321,
+        "quantiles": {
+          "p00": -180.0,
+          "p01": -149.01999999999998,
+          "p05": -65.0,
+          "p25": 18.0,
+          "p50": 48.0,
+          "p75": 79.0,
+          "p95": 143.0,
+          "p99": 251.0299999999993,
+          "p100": 32767.0
+        },
+        "sentinel_candidate_counts": {
+          "29999": 14,
+          "32767": 6,
+          "-32767": 0,
+          "-32768": 0,
+          "65534": 0,
+          "65535": 0
+        },
+        "most_frequent_values": [
+          {
+            "value": 45.0,
+            "count": 38
+          },
+          {
+            "value": 48.0,
+            "count": 32
+          },
+          {
+            "value": 33.0,
+            "count": 30
+          },
+          {
+            "value": 62.0,
+            "count": 29
+          },
+          {
+            "value": 54.0,
+            "count": 29
+          },
+          {
+            "value": 31.0,
+            "count": 28
+          },
+          {
+            "value": 64.0,
+            "count": 28
+          },
+          {
+            "value": 21.0,
+            "count": 28
+          }
+        ],
+        "note": "Frequent spikes at 29999/32767/65535 are treated as candidate sentinels during feature cleaning. Official PhysioNet per-field codebook is not stored in this repository, so the replacement policy is documented and unit-tested rather than claimed as vendor-complete."
+      }
+    }
+  },
+  "feature_audit": {
+    "validity_config": {
+      "timing_sentinels": [
+        29999,
+        32767,
+        65534,
+        65535
+      ],
+      "axis_sentinels": [
+        29999,
+        32767,
+        -32767,
+        -32768,
+        65534,
+        65535
+      ],
+      "fiducial_min_ms": 0,
+      "fiducial_max_ms": 10000,
+      "rr_min_ms": 0,
+      "rr_max_ms": 10000,
+      "axis_min_deg": -180,
+      "axis_max_deg": 180,
+      "require_positive_derived_intervals": true
+    },
+    "units": {
+      "rr_interval": "milliseconds, R-R cycle length",
+      "p_onset": "milliseconds, P-wave onset time position in the ECG window",
+      "p_end": "milliseconds, P-wave end time position",
+      "qrs_onset": "milliseconds, QRS onset time position",
+      "qrs_end": "milliseconds, QRS end time position",
+      "t_end": "milliseconds, T-wave end time position",
+      "p_axis": "degrees, frontal-plane P axis",
+      "qrs_axis": "degrees, frontal-plane QRS axis",
+      "t_axis": "degrees, frontal-plane T axis",
+      "pr_interval": "milliseconds, p_end - p_onset when both valid and p_end > p_onset",
+      "qrs_duration": "milliseconds, qrs_end - qrs_onset when both valid and qrs_end > qrs_onset",
+      "qt_interval": "milliseconds, t_end - qrs_onset when both valid and t_end > qrs_onset"
+    },
+    "column_audit": {
+      "rr_interval": {
+        "failed_conversions": 0,
+        "original_missing": 0,
+        "sentinel": 0,
+        "out_of_range": 0,
+        "nonpositive_rr": 0,
+        "final_missing": 0,
+        "replaced_with_missing": 0
+      },
+      "p_onset": {
+        "failed_conversions": 0,
+        "original_missing": 0,
+        "sentinel": 27,
+        "out_of_range": 0,
+        "nonpositive_rr": 0,
+        "final_missing": 27,
+        "replaced_with_missing": 27
+      },
+      "p_end": {
+        "failed_conversions": 0,
+        "original_missing": 0,
+        "sentinel": 88,
+        "out_of_range": 0,
+        "nonpositive_rr": 0,
+        "final_missing": 88,
+        "replaced_with_missing": 88
+      },
+      "qrs_onset": {
+        "failed_conversions": 0,
+        "original_missing": 0,
+        "sentinel": 0,
+        "out_of_range": 0,
+        "nonpositive_rr": 0,
+        "final_missing": 0,
+        "replaced_with_missing": 0
+      },
+      "qrs_end": {
+        "failed_conversions": 0,
+        "original_missing": 0,
+        "sentinel": 0,
+        "out_of_range": 0,
+        "nonpositive_rr": 0,
+        "final_missing": 0,
+        "replaced_with_missing": 0
+      },
+      "t_end": {
+        "failed_conversions": 0,
+        "original_missing": 0,
+        "sentinel": 0,
+        "out_of_range": 0,
+        "nonpositive_rr": 0,
+        "final_missing": 0,
+        "replaced_with_missing": 0
+      },
+      "p_axis": {
+        "failed_conversions": 0,
+        "original_missing": 0,
+        "sentinel": 34,
+        "out_of_range": 0,
+        "final_missing": 34,
+        "replaced_with_missing": 34
+      },
+      "qrs_axis": {
+        "failed_conversions": 0,
+        "original_missing": 0,
+        "sentinel": 1,
+        "out_of_range": 0,
+        "final_missing": 1,
+        "replaced_with_missing": 1
+      },
+      "t_axis": {
+        "failed_conversions": 0,
+        "original_missing": 0,
+        "sentinel": 1,
+        "out_of_range": 3,
+        "final_missing": 4,
+        "replaced_with_missing": 4
+      }
+    },
+    "derived": {
+      "pr_interval": {
+        "formula": "p_end - p_onset",
+        "n_defined": 435,
+        "n_missing": 88,
+        "n_nonpositive_when_both_present": 0,
+        "retained": true
+      },
+      "qrs_duration": {
+        "formula": "qrs_end - qrs_onset",
+        "n_defined": 523,
+        "n_missing": 0,
+        "n_nonpositive_when_both_present": 0,
+        "retained": true
+      },
+      "qt_interval": {
+        "formula": "t_end - qrs_onset",
+        "n_defined": 523,
+        "n_missing": 0,
+        "n_nonpositive_when_both_present": 0,
+        "retained": true
+      }
+    },
+    "sentinel_policy_uncertainty": {
+      "official_codebook_in_repo": false,
+      "primary_policy": "replace documented 16-bit and 29999 encodings plus range bounds with missing",
+      "sensitivity_note": "If only 29999 were invalid, remaining 32767/65534/65535 counts are recorded per column in column_audit.sentinel. Those encodings are still treated as missing in the primary experiment because they are not plausible timing or axis values at the documented units."
+    },
+    "notes": [
+      "MIMIC-IV-ECG documents onset/end fields as time positions in msec, not as precomputed durations.",
+      "29999 and 32767 appear as unavailable machine encodings in the public PhysioNet sample and as 16-bit sentinels.",
+      "Fiducials outside 0-10000 ms fall outside a 10-second recording window.",
+      "Electrical axis values outside [-180, 180] degrees are treated as invalid frontal-plane angles.",
+      "report_*, identifiers, bandwidth, and filtering are never features."
+    ],
+    "circular_axes": {
+      "method": "sin/cos of imputed axis degrees, computed after training-only median imputation",
+      "reason": "Frontal-plane axes are circular; -179 and +179 are adjacent angles.",
+      "applied_in": "preprocessing.FittedPreprocessor after imputation",
+      "source_columns": [
+        "p_axis",
+        "qrs_axis",
+        "t_axis"
+      ],
+      "note": "Sin/cos are not computed on raw missing axes. Computing them before imputation would impute sine and cosine independently and could yield pairs that are not on the unit circle."
+    },
+    "final_feature_list": [
+      "rr_interval",
+      "p_onset",
+      "p_end",
+      "qrs_onset",
+      "qrs_end",
+      "t_end",
+      "p_axis",
+      "qrs_axis",
+      "t_axis",
+      "pr_interval",
+      "qrs_duration",
+      "qt_interval"
+    ]
+  },
+  "exclusion_steps": [
+    {
+      "step": "loaded",
+      "n": 2500
+    },
+    {
+      "step": "after_missing_id_drop",
+      "n": 2500
+    },
+    {
+      "step": "after_study_dedup",
+      "n": 2500
+    },
+    {
+      "step": "after_label_alignment",
+      "n": 2500
+    },
+    {
+      "step": "after_label_eligibility",
+      "n": 2245
+    },
+    {
+      "step": "after_shared_split_inner_join",
+      "n": 523
+    },
+    {
+      "step": "after_measurement_eligibility",
+      "n": 523
+    }
+  ],
+  "train_missingness_before_imputation": {
+    "rr_interval": 0.0,
+    "p_onset": 0.061855670103092786,
+    "p_end": 0.19845360824742267,
+    "qrs_onset": 0.0,
+    "qrs_end": 0.0,
+    "t_end": 0.0,
+    "p_axis": 0.07731958762886598,
+    "qrs_axis": 0.0,
+    "t_axis": 0.002577319587628866,
+    "pr_interval": 0.19845360824742267,
+    "qrs_duration": 0.0,
+    "qt_interval": 0.0
+  },
+  "high_missingness_train_features": {},
+  "label_prevalence_train": {
+    "NORM": 0.2706185567010309,
+    "HYP": 0.22422680412371135,
+    "STTC": 0.3865979381443299,
+    "MI": 0.27835051546391754,
+    "CD": 0.2036082474226804
+  }
+}

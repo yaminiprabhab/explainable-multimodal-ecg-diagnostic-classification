@@ -1,0 +1,6 @@
+label,tp,fp,tn,fn,positive_support,negative_support,threshold
+NORM,2,7,60,12,14,67,0.85
+HYP,10,22,38,11,21,60,0.35
+STTC,24,11,37,9,33,48,0.25
+MI,7,56,12,6,13,68,0.1
+CD,28,3,48,2,30,51,0.39999999999999997

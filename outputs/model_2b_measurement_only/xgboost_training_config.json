@@ -1,0 +1,137 @@
+{
+  "name": "xgboost",
+  "selection": {
+    "selected_params": {
+      "n_estimators": 200,
+      "max_depth": 3,
+      "learning_rate": 0.1,
+      "subsample": 1.0,
+      "colsample_bytree": 1.0
+    },
+    "selected_score": 0.834511324182524,
+    "selection_metric": "macro_auroc",
+    "trials": [
+      {
+        "params": {
+          "n_estimators": 100,
+          "max_depth": 3,
+          "learning_rate": 0.1,
+          "subsample": 1.0,
+          "colsample_bytree": 1.0
+        },
+        "score": 0.8274563470096394,
+        "n_defined_labels": 5
+      },
+      {
+        "params": {
+          "n_estimators": 100,
+          "max_depth": 6,
+          "learning_rate": 0.1,
+          "subsample": 1.0,
+          "colsample_bytree": 1.0
+        },
+        "score": 0.8212086522612271,
+        "n_defined_labels": 5
+      },
+      {
+        "params": {
+          "n_estimators": 200,
+          "max_depth": 3,
+          "learning_rate": 0.1,
+          "subsample": 1.0,
+          "colsample_bytree": 1.0
+        },
+        "score": 0.834511324182524,
+        "n_defined_labels": 5
+      },
+      {
+        "params": {
+          "n_estimators": 200,
+          "max_depth": 6,
+          "learning_rate": 0.1,
+          "subsample": 1.0,
+          "colsample_bytree": 1.0
+        },
+        "score": 0.8112603061817574,
+        "n_defined_labels": 5
+      }
+    ],
+    "label_notes": [
+      {
+        "label": "NORM",
+        "fallback": false,
+        "n_pos": 105,
+        "n_neg": 283,
+        "pos_weight": 2.6952380952380954
+      },
+      {
+        "label": "HYP",
+        "fallback": false,
+        "n_pos": 87,
+        "n_neg": 301,
+        "pos_weight": 3.4597701149425286
+      },
+      {
+        "label": "STTC",
+        "fallback": false,
+        "n_pos": 150,
+        "n_neg": 238,
+        "pos_weight": 1.5866666666666667
+      },
+      {
+        "label": "MI",
+        "fallback": false,
+        "n_pos": 108,
+        "n_neg": 280,
+        "pos_weight": 2.5925925925925926
+      },
+      {
+        "label": "CD",
+        "fallback": false,
+        "n_pos": 79,
+        "n_neg": 309,
+        "pos_weight": 3.911392405063291
+      }
+    ],
+    "xgboost_version": "3.4.1"
+  },
+  "label_order": [
+    "NORM",
+    "HYP",
+    "STTC",
+    "MI",
+    "CD"
+  ],
+  "class_imbalance": {
+    "NORM": {
+      "train_positives": 105,
+      "train_prevalence": 0.2706185567010309,
+      "val_positives": 12,
+      "val_prevalence": 0.2222222222222222
+    },
+    "HYP": {
+      "train_positives": 87,
+      "train_prevalence": 0.22422680412371135,
+      "val_positives": 8,
+      "val_prevalence": 0.14814814814814814
+    },
+    "STTC": {
+      "train_positives": 150,
+      "train_prevalence": 0.3865979381443299,
+      "val_positives": 27,
+      "val_prevalence": 0.5
+    },
+    "MI": {
+      "train_positives": 108,
+      "train_prevalence": 0.27835051546391754,
+      "val_positives": 13,
+      "val_prevalence": 0.24074074074074073
+    },
+    "CD": {
+      "train_positives": 79,
+      "train_prevalence": 0.2036082474226804,
+      "val_positives": 16,
+      "val_prevalence": 0.2962962962962963
+    }
+  }
+}

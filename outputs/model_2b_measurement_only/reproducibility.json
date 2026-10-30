@@ -1,0 +1,46 @@
+{
+  "package_versions": {
+    "python": "3.13.5",
+    "pandas": "3.1.0",
+    "numpy": "2.5.4",
+    "yaml": "6.0.3",
+    "torch": "2.15.0+cu132",
+    "sklearn": "1.9.1",
+    "xgboost": "3.4.1",
+    "matplotlib": "3.11.2",
+    "joblib": "1.6.0"
+  },
+  "seed": 42,
+  "config_path": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/configs/model_2b_measurement_only.yaml",
+  "input_csv": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/machine_measurements.csv",
+  "label_info": {
+    "label_order": [
+      "NORM",
+      "HYP",
+      "STTC",
+      "MI",
+      "CD"
+    ],
+    "mapping_version": "1.0.0",
+    "source": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/artifacts/labels.csv",
+    "weak_labels": true,
+    "clinically_verified": false,
+    "uncertain_policy": "positive_weak",
+    "reused_shared_artifact": true
+  },
+  "split_info": {
+    "source": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/artifacts/patient_split_manifest.csv",
+    "reused_shared_artifact": true,
+    "method": "reuse_model_2_patient_split_manifest",
+    "n_manifest_studies": 523,
+    "n_manifest_subjects": 100,
+    "split_counts": {
+      "train": 388,
+      "test": 81,
+      "val": 54
+    }
+  },
+  "label_mapping_version": "1.0.0",
+  "weak_labels": true,
+  "clinically_verified": false
+}

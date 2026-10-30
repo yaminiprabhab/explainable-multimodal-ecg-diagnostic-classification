@@ -1,0 +1,289 @@
+{
+  "stopped_before_training": false,
+  "files": {
+    "labels_full": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/artifacts/labels_full.csv",
+    "labels": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/artifacts/labels.csv",
+    "cohort_manifest": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/artifacts/cohort_manifest.csv",
+    "patient_split_manifest": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/artifacts/patient_split_manifest.csv",
+    "label_mapping": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/artifacts/label_mapping.yaml",
+    "output_dir": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/outputs/model_2_text_only"
+  },
+  "n_input_rows": 2500,
+  "n_labeled_eligible": 2245,
+  "n_text_cohort": 523,
+  "n_train": 388,
+  "n_val": 54,
+  "n_test": 81,
+  "split_stats": {
+    "by_split": {
+      "test": {
+        "n_studies": 81,
+        "n_subjects": 15,
+        "NORM_prevalence": 0.1728395061728395,
+        "NORM_positives": 14,
+        "HYP_prevalence": 0.25925925925925924,
+        "HYP_positives": 21,
+        "STTC_prevalence": 0.4074074074074074,
+        "STTC_positives": 33,
+        "MI_prevalence": 0.16049382716049382,
+        "MI_positives": 13,
+        "CD_prevalence": 0.37037037037037035,
+        "CD_positives": 30
+      },
+      "train": {
+        "n_studies": 388,
+        "n_subjects": 70,
+        "NORM_prevalence": 0.2706185567010309,
+        "NORM_positives": 105,
+        "HYP_prevalence": 0.22422680412371135,
+        "HYP_positives": 87,
+        "STTC_prevalence": 0.3865979381443299,
+        "STTC_positives": 150,
+        "MI_prevalence": 0.27835051546391754,
+        "MI_positives": 108,
+        "CD_prevalence": 0.2036082474226804,
+        "CD_positives": 79
+      },
+      "val": {
+        "n_studies": 54,
+        "n_subjects": 15,
+        "NORM_prevalence": 0.2222222222222222,
+        "NORM_positives": 12,
+        "HYP_prevalence": 0.14814814814814814,
+        "HYP_positives": 8,
+        "STTC_prevalence": 0.5,
+        "STTC_positives": 27,
+        "MI_prevalence": 0.24074074074074073,
+        "MI_positives": 13,
+        "CD_prevalence": 0.2962962962962963,
+        "CD_positives": 16
+      }
+    },
+    "method": "random_group_split_unstratified",
+    "requested_ratios": {
+      "train": 0.7,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "actual_patient_ratios": {
+      "train": 0.7,
+      "test": 0.15,
+      "val": 0.15
+    }
+  },
+  "prevalence_full": [
+    {
+      "label": "NORM",
+      "positives": 456,
+      "negatives": 2044,
+      "prevalence": 0.1824,
+      "no_positives": false,
+      "no_negatives": false
+    },
+    {
+      "label": "HYP",
+      "positives": 465,
+      "negatives": 2035,
+      "prevalence": 0.186,
+      "no_positives": false,
+      "no_negatives": false
+    },
+    {
+      "label": "STTC",
+      "positives": 1022,
+      "negatives": 1478,
+      "prevalence": 0.4088,
+      "no_positives": false,
+      "no_negatives": false
+    },
+    {
+      "label": "MI",
+      "positives": 580,
+      "negatives": 1920,
+      "prevalence": 0.232,
+      "no_positives": false,
+      "no_negatives": false
+    },
+    {
+      "label": "CD",
+      "positives": 957,
+      "negatives": 1543,
+      "prevalence": 0.3828,
+      "no_positives": false,
+      "no_negatives": false
+    }
+  ],
+  "leakage_audit": {
+    "n_studies": 542,
+    "empty_text_studies": 19,
+    "fraction_with_remaining_text": 0.9649446494464945,
+    "mean_remaining_tokens": 4.523985239852398,
+    "median_remaining_tokens": 2.0,
+    "studies_where_rules_still_fire_on_masked_text": 0,
+    "fraction_reconstructable_from_masked_text": 0.0,
+    "rule_hits_on_masked_text": {
+      "NORM": 0,
+      "HYP": 0,
+      "STTC": 0,
+      "MI": 0,
+      "CD": 0
+    },
+    "residual_clue_rates": {
+      "NORM": {
+        "clue_hits": 0,
+        "clue_hits_among_positives": 0,
+        "positives": 131
+      },
+      "HYP": {
+        "clue_hits": 1,
+        "clue_hits_among_positives": 1,
+        "positives": 119
+      },
+      "STTC": {
+        "clue_hits": 3,
+        "clue_hits_among_positives": 1,
+        "positives": 219
+      },
+      "MI": {
+        "clue_hits": 21,
+        "clue_hits_among_positives": 0,
+        "positives": 140
+      },
+      "CD": {
+        "clue_hits": 4,
+        "clue_hits_among_positives": 0,
+        "positives": 144
+      }
+    },
+    "example_remaining_text": [
+      "Sinus rhythm",
+      "Sinus bradycardia",
+      "Sinus rhythm | Abnormal R-wave progression, early transition | Prolonged QT interval",
+      "Sinus bradycardia with interpolated PVC(s)",
+      "Sinus bradycardia.",
+      "Sinus rhythm",
+      "Sinus rhythm",
+      "Sinus rhythm. | Poor R wave progression - probable normal variant"
+    ],
+    "experiment_type": "residual_text_prediction",
+    "stop_training": false,
+    "notes": [
+      "Targets are generated from the same report fields used to build text features.",
+      "Trigger statements are masked, but synonyms, rhythm context, and report structure can still correlate with labels.",
+      "This experiment measures whether leftover non-trigger text predicts weak labels, not cardiologist-verified diagnosis.",
+      "Masking does not eliminate leakage."
+    ],
+    "source_fields_for_labels": "report_0 ... report_17",
+    "fields_supplied_to_model": "clinical_text after statement-level masking"
+  },
+  "test_metrics": {
+    "n_studies": 81,
+    "n_subjects": 15,
+    "label_order": [
+      "NORM",
+      "HYP",
+      "STTC",
+      "MI",
+      "CD"
+    ],
+    "thresholds": {
+      "NORM": 0.49999999999999994,
+      "HYP": 0.05,
+      "STTC": 0.05,
+      "MI": 0.49999999999999994,
+      "CD": 0.05
+    },
+    "macro_f1": 0.42921616492177284,
+    "micro_f1": 0.4426559356136821,
+    "macro_precision": 0.2807407407407408,
+    "macro_recall": 0.9857142857142858,
+    "micro_precision": 0.2849740932642487,
+    "micro_recall": 0.990990990990991,
+    "per_label": {
+      "NORM": {
+        "support": 14,
+        "prevalence": 0.17283950746059418,
+        "threshold": 0.49999999999999994,
+        "precision": 0.2,
+        "recall": 0.9285714285714286,
+        "f1": 0.3291139240506329,
+        "auroc": 0.5469083155650319,
+        "auprc": 0.19139924787119147,
+        "tp": 13,
+        "fp": 52,
+        "tn": 15,
+        "fn": 1,
+        "undefined_auroc_reason": null,
+        "undefined_auprc_reason": null
+      },
+      "HYP": {
+        "support": 21,
+        "prevalence": 0.25925925374031067,
+        "threshold": 0.05,
+        "precision": 0.25925925925925924,
+        "recall": 1.0,
+        "f1": 0.4117647058823529,
+        "auroc": 0.6091269841269841,
+        "auprc": 0.4129588517381695,
+        "tp": 21,
+        "fp": 60,
+        "tn": 0,
+        "fn": 0,
+        "undefined_auroc_reason": null,
+        "undefined_auprc_reason": null
+      },
+      "STTC": {
+        "support": 33,
+        "prevalence": 0.40740740299224854,
+        "threshold": 0.05,
+        "precision": 0.4074074074074074,
+        "recall": 1.0,
+        "f1": 0.5789473684210527,
+        "auroc": 0.4990530303030302,
+        "auprc": 0.4257968939684603,
+        "tp": 33,
+        "fp": 48,
+        "tn": 0,
+        "fn": 0,
+        "undefined_auroc_reason": null,
+        "undefined_auprc_reason": null
+      },
+      "MI": {
+        "support": 13,
+        "prevalence": 0.16049382090568542,
+        "threshold": 0.49999999999999994,
+        "precision": 0.16666666666666666,
+        "recall": 1.0,
+        "f1": 0.2857142857142857,
+        "auroc": 0.5797511312217195,
+        "auprc": 0.1934065934065934,
+        "tp": 13,
+        "fp": 65,
+        "tn": 3,
+        "fn": 0,
+        "undefined_auroc_reason": null,
+        "undefined_auprc_reason": null
+      },
+      "CD": {
+        "support": 30,
+        "prevalence": 0.37037035822868347,
+        "threshold": 0.05,
+        "precision": 0.37037037037037035,
+        "recall": 1.0,
+        "f1": 0.5405405405405406,
+        "auroc": 0.5558823529411765,
+        "auprc": 0.44192422054842784,
+        "tp": 30,
+        "fp": 51,
+        "tn": 0,
+        "fn": 0,
+        "undefined_auroc_reason": null,
+        "undefined_auprc_reason": null
+      }
+    },
+    "macro_auroc": 0.5581443628315885,
+    "macro_auprc": 0.33309716150656854
+  },
+  "experiment_type": "residual_text_prediction",
+  "device": "cpu"
+}

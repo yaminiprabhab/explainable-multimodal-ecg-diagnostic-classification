@@ -1,0 +1,109 @@
+{
+  "name": "logistic_regression",
+  "selection": {
+    "selected_params": {
+      "C": 0.1
+    },
+    "selected_score": 0.8432333044284709,
+    "selection_metric": "macro_auroc",
+    "trials": [
+      {
+        "params": {
+          "C": 0.1
+        },
+        "score": 0.8432333044284709,
+        "n_defined_labels": 5
+      },
+      {
+        "params": {
+          "C": 1.0
+        },
+        "score": 0.8375028832445128,
+        "n_defined_labels": 5
+      },
+      {
+        "params": {
+          "C": 10.0
+        },
+        "score": 0.8340892556387771,
+        "n_defined_labels": 5
+      }
+    ],
+    "label_notes": [
+      {
+        "label": "NORM",
+        "fallback": false,
+        "n_pos": 105,
+        "n_neg": 283,
+        "pos_weight": 2.6952380952380954
+      },
+      {
+        "label": "HYP",
+        "fallback": false,
+        "n_pos": 87,
+        "n_neg": 301,
+        "pos_weight": 3.4597701149425286
+      },
+      {
+        "label": "STTC",
+        "fallback": false,
+        "n_pos": 150,
+        "n_neg": 238,
+        "pos_weight": 1.5866666666666667
+      },
+      {
+        "label": "MI",
+        "fallback": false,
+        "n_pos": 108,
+        "n_neg": 280,
+        "pos_weight": 2.5925925925925926
+      },
+      {
+        "label": "CD",
+        "fallback": false,
+        "n_pos": 79,
+        "n_neg": 309,
+        "pos_weight": 3.911392405063291
+      }
+    ]
+  },
+  "label_order": [
+    "NORM",
+    "HYP",
+    "STTC",
+    "MI",
+    "CD"
+  ],
+  "class_imbalance": {
+    "NORM": {
+      "train_positives": 105,
+      "train_prevalence": 0.2706185567010309,
+      "val_positives": 12,
+      "val_prevalence": 0.2222222222222222
+    },
+    "HYP": {
+      "train_positives": 87,
+      "train_prevalence": 0.22422680412371135,
+      "val_positives": 8,
+      "val_prevalence": 0.14814814814814814
+    },
+    "STTC": {
+      "train_positives": 150,
+      "train_prevalence": 0.3865979381443299,
+      "val_positives": 27,
+      "val_prevalence": 0.5
+    },
+    "MI": {
+      "train_positives": 108,
+      "train_prevalence": 0.27835051546391754,
+      "val_positives": 13,
+      "val_prevalence": 0.24074074074074073
+    },
+    "CD": {
+      "train_positives": 79,
+      "train_prevalence": 0.2036082474226804,
+      "val_positives": 16,
+      "val_prevalence": 0.2962962962962963
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "steps": [
+    {
+      "step": "loaded",
+      "n": 2500
+    },
+    {
+      "step": "after_missing_id_drop",
+      "n": 2500
+    },
+    {
+      "step": "after_study_dedup",
+      "n": 2500
+    },
+    {
+      "step": "after_label_eligibility",
+      "n": 2245,
+      "dropped": 255
+    },
+    {
+      "step": "after_working_cohort_sample",
+      "n": 542
+    },
+    {
+      "step": "after_leakage_text_filter",
+      "n": 523
+    }
+  ],
+  "input_validation": {
+    "n_rows": 2500,
+    "n_columns": 33,
+    "columns": [
+      "subject_id",
+      "study_id",
+      "cart_id",
+      "ecg_time",
+      "report_0",
+      "report_1",
+      "report_2",
+      "report_3",
+      "report_4",
+      "report_5",
+      "report_6",
+      "report_7",
+      "report_8",
+      "report_9",
+      "report_10",
+      "report_11",
+      "report_12",
+      "report_13",
+      "report_14",
+      "report_15",
+      "report_16",
+      "report_17",
+      "bandwidth",
+      "filtering",
+      "rr_interval",
+      "p_onset",
+      "p_end",
+      "qrs_onset",
+      "qrs_end",
+      "t_end",
+      "p_axis",
+      "qrs_axis",
+      "t_axis"
+    ],
+    "report_columns": [
+      "report_0",
+      "report_1",
+      "report_2",
+      "report_3",
+      "report_4",
+      "report_5",
+      "report_6",
+      "report_7",
+      "report_8",
+      "report_9",
+      "report_10",
+      "report_11",
+      "report_12",
+      "report_13",
+      "report_14",
+      "report_15",
+      "report_16",
+      "report_17"
+    ],
+    "duplicate_rows": 0,
+    "duplicate_study_id_rows": 0,
+    "unique_subject_id": 450,
+    "unique_study_id": 2500,
+    "missing_subject_id": 0,
+    "missing_study_id": 0,
+    "rows_with_no_report_text": 0,
+    "dtypes": {
+      "subject_id": "int64",
+      "study_id": "int64",
+      "cart_id": "int64",
+      "ecg_time": "str",
+      "report_0": "str",
+      "report_1": "str",
+      "report_2": "str",
+      "report_3": "str",
+      "report_4": "str",
+      "report_5": "str",
+      "report_6": "str",
+      "report_7": "str",
+      "report_8": "str",
+      "report_9": "str",
+      "report_10": "str",
+      "report_11": "str",
+      "report_12": "float64",
+      "report_13": "str",
+      "report_14": "float64",
+      "report_15": "float64",
+      "report_16": "float64",
+      "report_17": "float64",
+      "bandwidth": "str",
+      "filtering": "str",
+      "rr_interval": "int64",
+      "p_onset": "int64",
+      "p_end": "int64",
+      "qrs_onset": "int64",
+      "qrs_end": "int64",
+      "t_end": "int64",
+      "p_axis": "int64",
+      "qrs_axis": "int64",
+      "t_axis": "int64"
+    }
+  },
+  "identifier_filter": {
+    "rows_before_id_filter": 2500,
+    "rows_missing_ids": 0,
+    "rows_after_id_filter": 2500
+  },
+  "duplicate_studies": {
+    "input_rows": 2500,
+    "duplicate_study_rows": 0,
+    "conflicting_duplicate_studies": 0,
+    "rows_after_study_dedup": 2500
+  }
+}

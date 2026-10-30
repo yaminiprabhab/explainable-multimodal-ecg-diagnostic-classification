@@ -1,0 +1,24 @@
+{
+  "fusion": "concat",
+  "init": {
+    "ecg_ckpt": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/outputs/model_1_ecg_only/best_model.pt",
+    "text_ckpt": null,
+    "ecg_missing": [],
+    "ecg_unexpected": [],
+    "text_ckpt_skipped": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/outputs/model_2_text_only/best_model.pt",
+    "text_ckpt_skip_reason": "Error(s) in loading state_dict for TextSequenceEncoder:\n\tsize mismatch for embedding.weight: copying a param with shape torch.Size([104, 64]) from checkpoint, the shape in current model is torch.Size([33, 64])."
+  },
+  "finetune_policy": "finetune_both_encoders_lower_text_lr",
+  "text_learning_rate": 0.0003,
+  "ecg_learning_rate": 0.001,
+  "device": "cpu",
+  "label_order": [
+    "NORM",
+    "HYP",
+    "STTC",
+    "MI",
+    "CD"
+  ],
+  "seed": 42,
+  "formula": "concat([z_ecg, z_text])"
+}

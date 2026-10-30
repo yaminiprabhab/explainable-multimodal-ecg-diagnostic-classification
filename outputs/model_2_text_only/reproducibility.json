@@ -1,0 +1,13 @@
+{
+  "package_versions": {
+    "python": "3.13.5",
+    "pandas": "3.1.0",
+    "numpy": "2.5.4",
+    "yaml": "6.0.3",
+    "torch": "2.15.0+cu132",
+    "sklearn": "1.9.1"
+  },
+  "seed": 42,
+  "config_path": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/configs/model_2_text_only.yaml",
+  "input_csv": "/home/arushi/tech/explainable-multimodal-ecg-diagnostic-classification/machine_measurements.csv"
+}

@@ -1,0 +1,1269 @@
+{
+  "summary": {
+    "NORM": {
+      "false_positives": 52,
+      "false_negatives": 1
+    },
+    "HYP": {
+      "false_positives": 60,
+      "false_negatives": 0
+    },
+    "STTC": {
+      "false_positives": 48,
+      "false_negatives": 0
+    },
+    "MI": {
+      "false_positives": 65,
+      "false_negatives": 0
+    },
+    "CD": {
+      "false_positives": 51,
+      "false_negatives": 0
+    }
+  },
+  "examples": [
+    {
+      "example_id": 0,
+      "kind": "error",
+      "clinical_text": "Sinus rhythm",
+      "true_labels": {
+        "NORM": 0,
+        "HYP": 0,
+        "STTC": 1,
+        "MI": 0,
+        "CD": 0
+      },
+      "predicted_labels": {
+        "NORM": 1,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 1,
+        "CD": 1
+      },
+      "probabilities": {
+        "NORM": 0.5689314007759094,
+        "HYP": 0.4872593879699707,
+        "STTC": 0.4711046516895294,
+        "MI": 0.5089197158813477,
+        "CD": 0.4977690577507019
+      },
+      "thresholds": {
+        "NORM": 0.49999999999999994,
+        "HYP": 0.05,
+        "STTC": 0.05,
+        "MI": 0.49999999999999994,
+        "CD": 0.05
+      },
+      "false_positives": [
+        "NORM",
+        "HYP",
+        "MI",
+        "CD"
+      ],
+      "false_negatives": [],
+      "occlusion": {
+        "text": "Sinus rhythm",
+        "tokens": [
+          "sinus",
+          "rhythm"
+        ],
+        "base_probabilities": {
+          "NORM": 0.5689314007759094,
+          "HYP": 0.4872593879699707,
+          "STTC": 0.4711046516895294,
+          "MI": 0.5089197158813477,
+          "CD": 0.4977690577507019
+        },
+        "attributions": [
+          {
+            "position": 0,
+            "token": "sinus",
+            "delta_prob": {
+              "NORM": 0.011344492435455322,
+              "HYP": 0.017827242612838745,
+              "STTC": -0.010355859994888306,
+              "MI": -0.022796988487243652,
+              "CD": -0.004146933555603027
+            }
+          },
+          {
+            "position": 1,
+            "token": "rhythm",
+            "delta_prob": {
+              "NORM": 0.06042212247848511,
+              "HYP": -0.011729031801223755,
+              "STTC": -0.029980987310409546,
+              "MI": -0.022612154483795166,
+              "CD": -0.0004830360412597656
+            }
+          }
+        ],
+        "method": "token_occlusion_replace_with_unk",
+        "limitations": [
+          "Occlusion measures local sensitivity of the trained model, not causality.",
+          "Correlated tokens can share credit or hide effects.",
+          "Attention weights were not used and would not constitute an explanation by themselves."
+        ]
+      }
+    },
+    {
+      "example_id": 1,
+      "kind": "error",
+      "clinical_text": "Sinus bradycardia",
+      "true_labels": {
+        "NORM": 0,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 0,
+        "CD": 0
+      },
+      "predicted_labels": {
+        "NORM": 1,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 1,
+        "CD": 1
+      },
+      "probabilities": {
+        "NORM": 0.5074552893638611,
+        "HYP": 0.4754585921764374,
+        "STTC": 0.5109633803367615,
+        "MI": 0.500618577003479,
+        "CD": 0.48051708936691284
+      },
+      "thresholds": {
+        "NORM": 0.49999999999999994,
+        "HYP": 0.05,
+        "STTC": 0.05,
+        "MI": 0.49999999999999994,
+        "CD": 0.05
+      },
+      "false_positives": [
+        "NORM",
+        "MI",
+        "CD"
+      ],
+      "false_negatives": [],
+      "occlusion": {
+        "text": "Sinus bradycardia",
+        "tokens": [
+          "sinus",
+          "bradycardia"
+        ],
+        "base_probabilities": {
+          "NORM": 0.5074552893638611,
+          "HYP": 0.4754585325717926,
+          "STTC": 0.5109633803367615,
+          "MI": 0.500618577003479,
+          "CD": 0.48051708936691284
+        },
+        "attributions": [
+          {
+            "position": 0,
+            "token": "sinus",
+            "delta_prob": {
+              "NORM": 0.0074378252029418945,
+              "HYP": 0.0076950788497924805,
+              "STTC": -0.005095303058624268,
+              "MI": -0.02572554349899292,
+              "CD": -0.00961083173751831
+            }
+          },
+          {
+            "position": 1,
+            "token": "bradycardia",
+            "delta_prob": {
+              "NORM": -0.0010539889335632324,
+              "HYP": -0.023529887199401855,
+              "STTC": 0.00987774133682251,
+              "MI": -0.03091329336166382,
+              "CD": -0.017735004425048828
+            }
+          }
+        ],
+        "method": "token_occlusion_replace_with_unk",
+        "limitations": [
+          "Occlusion measures local sensitivity of the trained model, not causality.",
+          "Correlated tokens can share credit or hide effects.",
+          "Attention weights were not used and would not constitute an explanation by themselves."
+        ]
+      }
+    },
+    {
+      "example_id": 2,
+      "kind": "error",
+      "clinical_text": "Sinus rhythm | Abnormal R-wave progression, early transition | Prolonged QT interval",
+      "true_labels": {
+        "NORM": 0,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 0,
+        "CD": 0
+      },
+      "predicted_labels": {
+        "NORM": 0,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 1,
+        "CD": 1
+      },
+      "probabilities": {
+        "NORM": 0.4272393584251404,
+        "HYP": 0.5356887578964233,
+        "STTC": 0.5271707773208618,
+        "MI": 0.5271010994911194,
+        "CD": 0.4391102194786072
+      },
+      "thresholds": {
+        "NORM": 0.49999999999999994,
+        "HYP": 0.05,
+        "STTC": 0.05,
+        "MI": 0.49999999999999994,
+        "CD": 0.05
+      },
+      "false_positives": [
+        "MI",
+        "CD"
+      ],
+      "false_negatives": [],
+      "occlusion": {
+        "text": "Sinus rhythm | Abnormal R-wave progression, early transition | Prolonged QT interval",
+        "tokens": [
+          "sinus",
+          "rhythm",
+          "abnormal",
+          "r",
+          "wave",
+          "progression",
+          "early",
+          "transition",
+          "prolonged",
+          "qt",
+          "interval"
+        ],
+        "base_probabilities": {
+          "NORM": 0.4272393584251404,
+          "HYP": 0.5356887578964233,
+          "STTC": 0.5271707773208618,
+          "MI": 0.5271010994911194,
+          "CD": 0.4391102194786072
+        },
+        "attributions": [
+          {
+            "position": 0,
+            "token": "sinus",
+            "delta_prob": {
+              "NORM": -0.01004210114479065,
+              "HYP": 0.018926262855529785,
+              "STTC": -0.005414009094238281,
+              "MI": -0.011259138584136963,
+              "CD": 0.0011693239212036133
+            }
+          },
+          {
+            "position": 1,
+            "token": "rhythm",
+            "delta_prob": {
+              "NORM": 0.006764501333236694,
+              "HYP": 0.01510608196258545,
+              "STTC": -0.018087685108184814,
+              "MI": -0.010215699672698975,
+              "CD": 0.004361271858215332
+            }
+          },
+          {
+            "position": 2,
+            "token": "abnormal",
+            "delta_prob": {
+              "NORM": 0.004392862319946289,
+              "HYP": 0.0026398897171020508,
+              "STTC": -0.002484261989593506,
+              "MI": -0.01087874174118042,
+              "CD": -0.0006676614284515381
+            }
+          },
+          {
+            "position": 3,
+            "token": "r",
+            "delta_prob": {
+              "NORM": -0.0036013424396514893,
+              "HYP": -4.76837158203125e-06,
+              "STTC": 0.0020566582679748535,
+              "MI": 0.00140303373336792,
+              "CD": 0.00029271841049194336
+            }
+          },
+          {
+            "position": 4,
+            "token": "wave",
+            "delta_prob": {
+              "NORM": 0.0014832019805908203,
+              "HYP": 0.0010120272636413574,
+              "STTC": 0.0011486411094665527,
+              "MI": -0.0035329461097717285,
+              "CD": 6.0439109802246094e-05
+            }
+          },
+          {
+            "position": 5,
+            "token": "progression",
+            "delta_prob": {
+              "NORM": -0.00030305981636047363,
+              "HYP": 0.00047707557678222656,
+              "STTC": 0.0008124709129333496,
+              "MI": -0.0017504096031188965,
+              "CD": -0.0008579790592193604
+            }
+          },
+          {
+            "position": 6,
+            "token": "early",
+            "delta_prob": {
+              "NORM": 0.0010068714618682861,
+              "HYP": 0.00011676549911499023,
+              "STTC": 0.0009285807609558105,
+              "MI": 0.0006938576698303223,
+              "CD": -0.0021073222160339355
+            }
+          },
+          {
+            "position": 7,
+            "token": "transition",
+            "delta_prob": {
+              "NORM": 9.489059448242188e-05,
+              "HYP": 0.0018457770347595215,
+              "STTC": 0.0015530586242675781,
+              "MI": -0.0018591880798339844,
+              "CD": -0.0017487406730651855
+            }
+          },
+          {
+            "position": 8,
+            "token": "prolonged",
+            "delta_prob": {
+              "NORM": -0.007472723722457886,
+              "HYP": -0.0012820959091186523,
+              "STTC": 0.006941795349121094,
+              "MI": -0.009134888648986816,
+              "CD": -0.004879951477050781
+            }
+          },
+          {
+            "position": 9,
+            "token": "qt",
+            "delta_prob": {
+              "NORM": -0.011309266090393066,
+              "HYP": 0.0070455074310302734,
+              "STTC": -0.0009401440620422363,
+              "MI": -0.004269123077392578,
+              "CD": -0.024528592824935913
+            }
+          },
+          {
+            "position": 10,
+            "token": "interval",
+            "delta_prob": {
+              "NORM": -0.04681238532066345,
+              "HYP": 0.012544453144073486,
+              "STTC": 0.03202888369560242,
+              "MI": -0.00040590763092041016,
+              "CD": -0.059152036905288696
+            }
+          }
+        ],
+        "method": "token_occlusion_replace_with_unk",
+        "limitations": [
+          "Occlusion measures local sensitivity of the trained model, not causality.",
+          "Correlated tokens can share credit or hide effects.",
+          "Attention weights were not used and would not constitute an explanation by themselves."
+        ]
+      }
+    },
+    {
+      "example_id": 3,
+      "kind": "error",
+      "clinical_text": "Sinus bradycardia with interpolated PVC(s)",
+      "true_labels": {
+        "NORM": 0,
+        "HYP": 0,
+        "STTC": 1,
+        "MI": 0,
+        "CD": 0
+      },
+      "predicted_labels": {
+        "NORM": 0,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 1,
+        "CD": 1
+      },
+      "probabilities": {
+        "NORM": 0.4950665831565857,
+        "HYP": 0.47352585196495056,
+        "STTC": 0.5174230337142944,
+        "MI": 0.5099822282791138,
+        "CD": 0.5058455467224121
+      },
+      "thresholds": {
+        "NORM": 0.49999999999999994,
+        "HYP": 0.05,
+        "STTC": 0.05,
+        "MI": 0.49999999999999994,
+        "CD": 0.05
+      },
+      "false_positives": [
+        "HYP",
+        "MI",
+        "CD"
+      ],
+      "false_negatives": [],
+      "occlusion": {
+        "text": "Sinus bradycardia with interpolated PVC(s)",
+        "tokens": [
+          "sinus",
+          "bradycardia",
+          "with",
+          "interpolated",
+          "pvc",
+          "s"
+        ],
+        "base_probabilities": {
+          "NORM": 0.4950665831565857,
+          "HYP": 0.47352585196495056,
+          "STTC": 0.5174230337142944,
+          "MI": 0.5099822282791138,
+          "CD": 0.5058455467224121
+        },
+        "attributions": [
+          {
+            "position": 0,
+            "token": "sinus",
+            "delta_prob": {
+              "NORM": -0.012997627258300781,
+              "HYP": 0.008927583694458008,
+              "STTC": -0.0003451704978942871,
+              "MI": -0.012668311595916748,
+              "CD": -0.0013195276260375977
+            }
+          },
+          {
+            "position": 1,
+            "token": "bradycardia",
+            "delta_prob": {
+              "NORM": 0.0019418597221374512,
+              "HYP": -0.011360585689544678,
+              "STTC": 0.002279043197631836,
+              "MI": -0.014845192432403564,
+              "CD": -0.004099428653717041
+            }
+          },
+          {
+            "position": 2,
+            "token": "with",
+            "delta_prob": {
+              "NORM": -0.005128204822540283,
+              "HYP": -0.0013720393180847168,
+              "STTC": 0.0029946565628051758,
+              "MI": -0.0030420422554016113,
+              "CD": 0.0038088560104370117
+            }
+          },
+          {
+            "position": 3,
+            "token": "interpolated",
+            "delta_prob": {
+              "NORM": 0.0,
+              "HYP": 0.0,
+              "STTC": 0.0,
+              "MI": 0.0,
+              "CD": 0.0
+            }
+          },
+          {
+            "position": 4,
+            "token": "pvc",
+            "delta_prob": {
+              "NORM": 0.004213869571685791,
+              "HYP": -4.500150680541992e-06,
+              "STTC": 0.005329430103302002,
+              "MI": -0.014732122421264648,
+              "CD": -0.0018682479858398438
+            }
+          },
+          {
+            "position": 5,
+            "token": "s",
+            "delta_prob": {
+              "NORM": 0.004842311143875122,
+              "HYP": -0.010831773281097412,
+              "STTC": 0.012623310089111328,
+              "MI": -0.021349608898162842,
+              "CD": -0.001217663288116455
+            }
+          }
+        ],
+        "method": "token_occlusion_replace_with_unk",
+        "limitations": [
+          "Occlusion measures local sensitivity of the trained model, not causality.",
+          "Correlated tokens can share credit or hide effects.",
+          "Attention weights were not used and would not constitute an explanation by themselves."
+        ]
+      }
+    },
+    {
+      "example_id": 4,
+      "kind": "error",
+      "clinical_text": "Sinus bradycardia.",
+      "true_labels": {
+        "NORM": 0,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 0,
+        "CD": 0
+      },
+      "predicted_labels": {
+        "NORM": 1,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 1,
+        "CD": 1
+      },
+      "probabilities": {
+        "NORM": 0.5074552893638611,
+        "HYP": 0.4754585921764374,
+        "STTC": 0.5109633803367615,
+        "MI": 0.500618577003479,
+        "CD": 0.48051708936691284
+      },
+      "thresholds": {
+        "NORM": 0.49999999999999994,
+        "HYP": 0.05,
+        "STTC": 0.05,
+        "MI": 0.49999999999999994,
+        "CD": 0.05
+      },
+      "false_positives": [
+        "NORM",
+        "MI",
+        "CD"
+      ],
+      "false_negatives": [],
+      "occlusion": {
+        "text": "Sinus bradycardia.",
+        "tokens": [
+          "sinus",
+          "bradycardia"
+        ],
+        "base_probabilities": {
+          "NORM": 0.5074552893638611,
+          "HYP": 0.4754585325717926,
+          "STTC": 0.5109633803367615,
+          "MI": 0.500618577003479,
+          "CD": 0.48051708936691284
+        },
+        "attributions": [
+          {
+            "position": 0,
+            "token": "sinus",
+            "delta_prob": {
+              "NORM": 0.0074378252029418945,
+              "HYP": 0.0076950788497924805,
+              "STTC": -0.005095303058624268,
+              "MI": -0.02572554349899292,
+              "CD": -0.00961083173751831
+            }
+          },
+          {
+            "position": 1,
+            "token": "bradycardia",
+            "delta_prob": {
+              "NORM": -0.0010539889335632324,
+              "HYP": -0.023529887199401855,
+              "STTC": 0.00987774133682251,
+              "MI": -0.03091329336166382,
+              "CD": -0.017735004425048828
+            }
+          }
+        ],
+        "method": "token_occlusion_replace_with_unk",
+        "limitations": [
+          "Occlusion measures local sensitivity of the trained model, not causality.",
+          "Correlated tokens can share credit or hide effects.",
+          "Attention weights were not used and would not constitute an explanation by themselves."
+        ]
+      }
+    },
+    {
+      "example_id": 5,
+      "kind": "error",
+      "clinical_text": "Sinus rhythm | *** report made without knowing patient's age ***",
+      "true_labels": {
+        "NORM": 1,
+        "HYP": 0,
+        "STTC": 0,
+        "MI": 0,
+        "CD": 0
+      },
+      "predicted_labels": {
+        "NORM": 1,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 0,
+        "CD": 1
+      },
+      "probabilities": {
+        "NORM": 0.5070675015449524,
+        "HYP": 0.5124966502189636,
+        "STTC": 0.5015733242034912,
+        "MI": 0.4938584268093109,
+        "CD": 0.46174487471580505
+      },
+      "thresholds": {
+        "NORM": 0.49999999999999994,
+        "HYP": 0.05,
+        "STTC": 0.05,
+        "MI": 0.49999999999999994,
+        "CD": 0.05
+      },
+      "false_positives": [
+        "HYP",
+        "STTC",
+        "CD"
+      ],
+      "false_negatives": [],
+      "occlusion": {
+        "text": "Sinus rhythm | *** report made without knowing patient's age ***",
+        "tokens": [
+          "sinus",
+          "rhythm",
+          "report",
+          "made",
+          "without",
+          "knowing",
+          "patient",
+          "s",
+          "age"
+        ],
+        "base_probabilities": {
+          "NORM": 0.5070675611495972,
+          "HYP": 0.5124966502189636,
+          "STTC": 0.5015733242034912,
+          "MI": 0.4938584268093109,
+          "CD": 0.46174487471580505
+        },
+        "attributions": [
+          {
+            "position": 0,
+            "token": "sinus",
+            "delta_prob": {
+              "NORM": -0.008932650089263916,
+              "HYP": 0.01847943663597107,
+              "STTC": -0.007625222206115723,
+              "MI": -0.01235935091972351,
+              "CD": 0.0040031373500823975
+            }
+          },
+          {
+            "position": 1,
+            "token": "rhythm",
+            "delta_prob": {
+              "NORM": 0.006232261657714844,
+              "HYP": 0.012551963329315186,
+              "STTC": -0.015347838401794434,
+              "MI": -0.00878170132637024,
+              "CD": 0.006664484739303589
+            }
+          },
+          {
+            "position": 2,
+            "token": "report",
+            "delta_prob": {
+              "NORM": 0.004444599151611328,
+              "HYP": 0.005700647830963135,
+              "STTC": -0.0009045004844665527,
+              "MI": -0.011331051588058472,
+              "CD": 0.0009385943412780762
+            }
+          },
+          {
+            "position": 3,
+            "token": "made",
+            "delta_prob": {
+              "NORM": 0.0022954940795898438,
+              "HYP": 0.003074169158935547,
+              "STTC": 0.0018033981323242188,
+              "MI": -0.007948547601699829,
+              "CD": -0.003407299518585205
+            }
+          },
+          {
+            "position": 4,
+            "token": "without",
+            "delta_prob": {
+              "NORM": -0.002142488956451416,
+              "HYP": 0.0012933611869812012,
+              "STTC": 0.0002803206443786621,
+              "MI": -0.0005166530609130859,
+              "CD": -0.00032460689544677734
+            }
+          },
+          {
+            "position": 5,
+            "token": "knowing",
+            "delta_prob": {
+              "NORM": 0.0017462372779846191,
+              "HYP": 0.002402782440185547,
+              "STTC": -0.0028930306434631348,
+              "MI": -0.009260863065719604,
+              "CD": -0.0026582181453704834
+            }
+          },
+          {
+            "position": 6,
+            "token": "patient",
+            "delta_prob": {
+              "NORM": 0.0020235180854797363,
+              "HYP": 0.003703594207763672,
+              "STTC": 0.0025640130043029785,
+              "MI": -0.008814185857772827,
+              "CD": -0.01143711805343628
+            }
+          },
+          {
+            "position": 7,
+            "token": "s",
+            "delta_prob": {
+              "NORM": -0.002959728240966797,
+              "HYP": -0.0010386109352111816,
+              "STTC": 0.0069366395473480225,
+              "MI": -0.0133076012134552,
+              "CD": -0.0038818418979644775
+            }
+          },
+          {
+            "position": 8,
+            "token": "age",
+            "delta_prob": {
+              "NORM": 0.003247976303100586,
+              "HYP": -0.004871010780334473,
+              "STTC": 0.006222128868103027,
+              "MI": -0.02661183476448059,
+              "CD": -0.04552409052848816
+            }
+          }
+        ],
+        "method": "token_occlusion_replace_with_unk",
+        "limitations": [
+          "Occlusion measures local sensitivity of the trained model, not causality.",
+          "Correlated tokens can share credit or hide effects.",
+          "Attention weights were not used and would not constitute an explanation by themselves."
+        ]
+      }
+    },
+    {
+      "example_id": 6,
+      "kind": "error",
+      "clinical_text": "Sinus rhythm",
+      "true_labels": {
+        "NORM": 1,
+        "HYP": 0,
+        "STTC": 0,
+        "MI": 0,
+        "CD": 0
+      },
+      "predicted_labels": {
+        "NORM": 1,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 1,
+        "CD": 1
+      },
+      "probabilities": {
+        "NORM": 0.5689314007759094,
+        "HYP": 0.4872593879699707,
+        "STTC": 0.4711046516895294,
+        "MI": 0.5089197158813477,
+        "CD": 0.4977690577507019
+      },
+      "thresholds": {
+        "NORM": 0.49999999999999994,
+        "HYP": 0.05,
+        "STTC": 0.05,
+        "MI": 0.49999999999999994,
+        "CD": 0.05
+      },
+      "false_positives": [
+        "HYP",
+        "STTC",
+        "MI",
+        "CD"
+      ],
+      "false_negatives": [],
+      "occlusion": {
+        "text": "Sinus rhythm",
+        "tokens": [
+          "sinus",
+          "rhythm"
+        ],
+        "base_probabilities": {
+          "NORM": 0.5689314007759094,
+          "HYP": 0.4872593879699707,
+          "STTC": 0.4711046516895294,
+          "MI": 0.5089197158813477,
+          "CD": 0.4977690577507019
+        },
+        "attributions": [
+          {
+            "position": 0,
+            "token": "sinus",
+            "delta_prob": {
+              "NORM": 0.011344492435455322,
+              "HYP": 0.017827242612838745,
+              "STTC": -0.010355859994888306,
+              "MI": -0.022796988487243652,
+              "CD": -0.004146933555603027
+            }
+          },
+          {
+            "position": 1,
+            "token": "rhythm",
+            "delta_prob": {
+              "NORM": 0.06042212247848511,
+              "HYP": -0.011729031801223755,
+              "STTC": -0.029980987310409546,
+              "MI": -0.022612154483795166,
+              "CD": -0.0004830360412597656
+            }
+          }
+        ],
+        "method": "token_occlusion_replace_with_unk",
+        "limitations": [
+          "Occlusion measures local sensitivity of the trained model, not causality.",
+          "Correlated tokens can share credit or hide effects.",
+          "Attention weights were not used and would not constitute an explanation by themselves."
+        ]
+      }
+    },
+    {
+      "example_id": 7,
+      "kind": "error",
+      "clinical_text": "Sinus rhythm",
+      "true_labels": {
+        "NORM": 1,
+        "HYP": 0,
+        "STTC": 0,
+        "MI": 0,
+        "CD": 0
+      },
+      "predicted_labels": {
+        "NORM": 1,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 1,
+        "CD": 1
+      },
+      "probabilities": {
+        "NORM": 0.5689314007759094,
+        "HYP": 0.4872593879699707,
+        "STTC": 0.4711046516895294,
+        "MI": 0.5089197158813477,
+        "CD": 0.4977690577507019
+      },
+      "thresholds": {
+        "NORM": 0.49999999999999994,
+        "HYP": 0.05,
+        "STTC": 0.05,
+        "MI": 0.49999999999999994,
+        "CD": 0.05
+      },
+      "false_positives": [
+        "HYP",
+        "STTC",
+        "MI",
+        "CD"
+      ],
+      "false_negatives": [],
+      "occlusion": {
+        "text": "Sinus rhythm",
+        "tokens": [
+          "sinus",
+          "rhythm"
+        ],
+        "base_probabilities": {
+          "NORM": 0.5689314007759094,
+          "HYP": 0.4872593879699707,
+          "STTC": 0.4711046516895294,
+          "MI": 0.5089197158813477,
+          "CD": 0.4977690577507019
+        },
+        "attributions": [
+          {
+            "position": 0,
+            "token": "sinus",
+            "delta_prob": {
+              "NORM": 0.011344492435455322,
+              "HYP": 0.017827242612838745,
+              "STTC": -0.010355859994888306,
+              "MI": -0.022796988487243652,
+              "CD": -0.004146933555603027
+            }
+          },
+          {
+            "position": 1,
+            "token": "rhythm",
+            "delta_prob": {
+              "NORM": 0.06042212247848511,
+              "HYP": -0.011729031801223755,
+              "STTC": -0.029980987310409546,
+              "MI": -0.022612154483795166,
+              "CD": -0.0004830360412597656
+            }
+          }
+        ],
+        "method": "token_occlusion_replace_with_unk",
+        "limitations": [
+          "Occlusion measures local sensitivity of the trained model, not causality.",
+          "Correlated tokens can share credit or hide effects.",
+          "Attention weights were not used and would not constitute an explanation by themselves."
+        ]
+      }
+    },
+    {
+      "example_id": 8,
+      "kind": "error",
+      "clinical_text": "Sinus rhythm",
+      "true_labels": {
+        "NORM": 0,
+        "HYP": 0,
+        "STTC": 0,
+        "MI": 0,
+        "CD": 1
+      },
+      "predicted_labels": {
+        "NORM": 1,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 1,
+        "CD": 1
+      },
+      "probabilities": {
+        "NORM": 0.5689314007759094,
+        "HYP": 0.4872593879699707,
+        "STTC": 0.4711046516895294,
+        "MI": 0.5089197158813477,
+        "CD": 0.4977690577507019
+      },
+      "thresholds": {
+        "NORM": 0.49999999999999994,
+        "HYP": 0.05,
+        "STTC": 0.05,
+        "MI": 0.49999999999999994,
+        "CD": 0.05
+      },
+      "false_positives": [
+        "NORM",
+        "HYP",
+        "STTC",
+        "MI"
+      ],
+      "false_negatives": [],
+      "occlusion": {
+        "text": "Sinus rhythm",
+        "tokens": [
+          "sinus",
+          "rhythm"
+        ],
+        "base_probabilities": {
+          "NORM": 0.5689314007759094,
+          "HYP": 0.4872593879699707,
+          "STTC": 0.4711046516895294,
+          "MI": 0.5089197158813477,
+          "CD": 0.4977690577507019
+        },
+        "attributions": [
+          {
+            "position": 0,
+            "token": "sinus",
+            "delta_prob": {
+              "NORM": 0.011344492435455322,
+              "HYP": 0.017827242612838745,
+              "STTC": -0.010355859994888306,
+              "MI": -0.022796988487243652,
+              "CD": -0.004146933555603027
+            }
+          },
+          {
+            "position": 1,
+            "token": "rhythm",
+            "delta_prob": {
+              "NORM": 0.06042212247848511,
+              "HYP": -0.011729031801223755,
+              "STTC": -0.029980987310409546,
+              "MI": -0.022612154483795166,
+              "CD": -0.0004830360412597656
+            }
+          }
+        ],
+        "method": "token_occlusion_replace_with_unk",
+        "limitations": [
+          "Occlusion measures local sensitivity of the trained model, not causality.",
+          "Correlated tokens can share credit or hide effects.",
+          "Attention weights were not used and would not constitute an explanation by themselves."
+        ]
+      }
+    },
+    {
+      "example_id": 9,
+      "kind": "error",
+      "clinical_text": "Sinus rhythm",
+      "true_labels": {
+        "NORM": 0,
+        "HYP": 0,
+        "STTC": 0,
+        "MI": 0,
+        "CD": 1
+      },
+      "predicted_labels": {
+        "NORM": 1,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 1,
+        "CD": 1
+      },
+      "probabilities": {
+        "NORM": 0.5689314007759094,
+        "HYP": 0.4872593879699707,
+        "STTC": 0.4711046516895294,
+        "MI": 0.5089197158813477,
+        "CD": 0.4977690577507019
+      },
+      "thresholds": {
+        "NORM": 0.49999999999999994,
+        "HYP": 0.05,
+        "STTC": 0.05,
+        "MI": 0.49999999999999994,
+        "CD": 0.05
+      },
+      "false_positives": [
+        "NORM",
+        "HYP",
+        "STTC",
+        "MI"
+      ],
+      "false_negatives": [],
+      "occlusion": {
+        "text": "Sinus rhythm",
+        "tokens": [
+          "sinus",
+          "rhythm"
+        ],
+        "base_probabilities": {
+          "NORM": 0.5689314007759094,
+          "HYP": 0.4872593879699707,
+          "STTC": 0.4711046516895294,
+          "MI": 0.5089197158813477,
+          "CD": 0.4977690577507019
+        },
+        "attributions": [
+          {
+            "position": 0,
+            "token": "sinus",
+            "delta_prob": {
+              "NORM": 0.011344492435455322,
+              "HYP": 0.017827242612838745,
+              "STTC": -0.010355859994888306,
+              "MI": -0.022796988487243652,
+              "CD": -0.004146933555603027
+            }
+          },
+          {
+            "position": 1,
+            "token": "rhythm",
+            "delta_prob": {
+              "NORM": 0.06042212247848511,
+              "HYP": -0.011729031801223755,
+              "STTC": -0.029980987310409546,
+              "MI": -0.022612154483795166,
+              "CD": -0.0004830360412597656
+            }
+          }
+        ],
+        "method": "token_occlusion_replace_with_unk",
+        "limitations": [
+          "Occlusion measures local sensitivity of the trained model, not causality.",
+          "Correlated tokens can share credit or hide effects.",
+          "Attention weights were not used and would not constitute an explanation by themselves."
+        ]
+      }
+    },
+    {
+      "example_id": 10,
+      "kind": "error",
+      "clinical_text": "Sinus rhythm.",
+      "true_labels": {
+        "NORM": 1,
+        "HYP": 0,
+        "STTC": 0,
+        "MI": 0,
+        "CD": 0
+      },
+      "predicted_labels": {
+        "NORM": 1,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 1,
+        "CD": 1
+      },
+      "probabilities": {
+        "NORM": 0.5689314007759094,
+        "HYP": 0.4872593879699707,
+        "STTC": 0.4711046516895294,
+        "MI": 0.5089197158813477,
+        "CD": 0.4977690577507019
+      },
+      "thresholds": {
+        "NORM": 0.49999999999999994,
+        "HYP": 0.05,
+        "STTC": 0.05,
+        "MI": 0.49999999999999994,
+        "CD": 0.05
+      },
+      "false_positives": [
+        "HYP",
+        "STTC",
+        "MI",
+        "CD"
+      ],
+      "false_negatives": [],
+      "occlusion": {
+        "text": "Sinus rhythm.",
+        "tokens": [
+          "sinus",
+          "rhythm"
+        ],
+        "base_probabilities": {
+          "NORM": 0.5689314007759094,
+          "HYP": 0.4872593879699707,
+          "STTC": 0.4711046516895294,
+          "MI": 0.5089197158813477,
+          "CD": 0.4977690577507019
+        },
+        "attributions": [
+          {
+            "position": 0,
+            "token": "sinus",
+            "delta_prob": {
+              "NORM": 0.011344492435455322,
+              "HYP": 0.017827242612838745,
+              "STTC": -0.010355859994888306,
+              "MI": -0.022796988487243652,
+              "CD": -0.004146933555603027
+            }
+          },
+          {
+            "position": 1,
+            "token": "rhythm",
+            "delta_prob": {
+              "NORM": 0.06042212247848511,
+              "HYP": -0.011729031801223755,
+              "STTC": -0.029980987310409546,
+              "MI": -0.022612154483795166,
+              "CD": -0.0004830360412597656
+            }
+          }
+        ],
+        "method": "token_occlusion_replace_with_unk",
+        "limitations": [
+          "Occlusion measures local sensitivity of the trained model, not causality.",
+          "Correlated tokens can share credit or hide effects.",
+          "Attention weights were not used and would not constitute an explanation by themselves."
+        ]
+      }
+    },
+    {
+      "example_id": 11,
+      "kind": "error",
+      "clinical_text": "Sinus rhythm",
+      "true_labels": {
+        "NORM": 0,
+        "HYP": 0,
+        "STTC": 0,
+        "MI": 0,
+        "CD": 1
+      },
+      "predicted_labels": {
+        "NORM": 1,
+        "HYP": 1,
+        "STTC": 1,
+        "MI": 1,
+        "CD": 1
+      },
+      "probabilities": {
+        "NORM": 0.5689314007759094,
+        "HYP": 0.4872593879699707,
+        "STTC": 0.4711046516895294,
+        "MI": 0.5089197158813477,
+        "CD": 0.4977690577507019
+      },
+      "thresholds": {
+        "NORM": 0.49999999999999994,
+        "HYP": 0.05,
+        "STTC": 0.05,
+        "MI": 0.49999999999999994,
+        "CD": 0.05
+      },
+      "false_positives": [
+        "NORM",
+        "HYP",
+        "STTC",
+        "MI"
+      ],
+      "false_negatives": [],
+      "occlusion": {
+        "text": "Sinus rhythm",
+        "tokens": [
+          "sinus",
+          "rhythm"
+        ],
+        "base_probabilities": {
+          "NORM": 0.5689314007759094,
+          "HYP": 0.4872593879699707,
+          "STTC": 0.4711046516895294,
+          "MI": 0.5089197158813477,
+          "CD": 0.4977690577507019
+        },
+        "attributions": [
+          {
+            "position": 0,
+            "token": "sinus",
+            "delta_prob": {
+              "NORM": 0.011344492435455322,
+              "HYP": 0.017827242612838745,
+              "STTC": -0.010355859994888306,
+              "MI": -0.022796988487243652,
+              "CD": -0.004146933555603027
+            }
+          },
+          {
+            "position": 1,
+            "token": "rhythm",
+            "delta_prob": {
+              "NORM": 0.06042212247848511,
+              "HYP": -0.011729031801223755,
+              "STTC": -0.029980987310409546,
+              "MI": -0.022612154483795166,
+              "CD": -0.0004830360412597656
+            }
+          }
+        ],
+        "method": "token_occlusion_replace_with_unk",
+        "limitations": [
+          "Occlusion measures local sensitivity of the trained model, not causality.",
+          "Correlated tokens can share credit or hide effects.",
+          "Attention weights were not used and would not constitute an explanation by themselves."
+        ]
+      }
+    }
+  ],
+  "note": "example_id is a split-local index. Patient identifiers are omitted from this public report."
+}
