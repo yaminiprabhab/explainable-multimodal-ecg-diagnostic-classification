@@ -76,7 +76,6 @@ Model 2 is the **source of truth** for labels + split + residual text. Models 1/
 ---
 
 ## Getting the data (how it actually arrives)
-
 Nothing in git is the MIMIC clinical table or the 12-lead signals. You pull them from **PhysioNet** under a data-use agreement, then the pipelines read local files from the **repository root**.
 
 **Dataset:** [MIMIC-IV-ECG Diagnostic Electrocardiogram Matched Subset v1.0](https://physionet.org/content/mimic-iv-ecg/1.0/). Controlled-access. Typical path: PhysioNet account → CITI “Data or Specimens Only Research” → sign the MIMIC-IV-ECG DUA → download. Follow PhysioNet’s current instructions; do not commit PHI, report text, or waveforms.
