@@ -74,6 +74,12 @@ The model processes the raw 12-lead ECG waveform to learn temporal and morpholog
 * Learn discriminative ECG representations.
 * Identify the diagnostic performance achievable without clinical text.
 
+Implementation: [model_1_ecg_only/](C:/Users/sruth/Documents/GitHub/explainable-multimodal-ecg-diagnostic-classification/model_1_ecg_only/)
+contains the waveform index contract, 1D CNN, train-only normalization,
+evaluation, gradient-saliency output, and synthetic smoke test. Raw MIMIC-IV-ECG
+waveforms are not included; authorized users must create the documented
+`waveform_index.csv` before running a real experiment.
+
 ### Model 2: Clinical-Text-Only Baseline
 
 **Architecture:** Long Short-Term Memory (LSTM) or Gated Recurrent Unit (GRU)
@@ -307,7 +313,7 @@ The dataset may require separate access approval. Users should follow the datase
 * [ ] Rule-based diagnostic label generation
 * [ ] Leakage-aware clinical-text preprocessing
 * [ ] Patient-level train, validation, and test split
-* [ ] ECG-only CNN baseline
+* [x] ECG-only CNN baseline implementation (requires authorized raw waveforms for real training)
 * [ ] Clinical-text-only LSTM/GRU baseline
 * [ ] Feature-concatenation fusion model
 * [ ] Attention-based fusion model
