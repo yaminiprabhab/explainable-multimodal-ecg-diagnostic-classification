@@ -1,0 +1,24 @@
+# Model 4 Configuration: Gated Attention Fusion
+model_name: "model_4_attention_fusion"
+random_seed: 42
+
+architecture:
+  ecg_embed_dim: 128
+  text_embed_dim: 128
+  vocab_size: 202
+  num_classes: 5
+  dropout: 0.3
+
+training:
+  epochs: 20
+  batch_size: 16
+  lr_ecg: 0.001
+  lr_text: 0.0003
+  lr_fusion: 0.001
+
+artifacts:
+  split_manifest: "artifacts/patient_split_manifest.csv"
+  label_mapping: "artifacts/label_mapping.yaml"
+  vocabulary: "outputs/model_2_text_only/vocabulary.json"
+
+output_dir: "outputs/model_4_attention_fusion"
